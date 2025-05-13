@@ -1,3 +1,3 @@
 <?php
-logout();
+\Core\Session::destroy();
 exit();

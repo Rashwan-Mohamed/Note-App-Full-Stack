@@ -26,7 +26,6 @@ function App({ id }) {
     const signGuest = async () => {
         await newSission('guest', 'guest@email.com', '1234567gG!@');
         fetchNotes(handleSettingNotes)
-
     }
 
     const reloadNotes = () => {

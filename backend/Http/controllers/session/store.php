@@ -1,8 +1,11 @@
 <?php
 
 use Core\Authenticator;
+use Core\Session;
 
-//session_start();
+Session::destroy(); // ❗ Always destroy any session before login attempt
+Session::ensureSession(); // Optionally start a fresh one for safety
+
 try {
     $data = json_decode(file_get_contents('php://input'), true);
     $email = $data['email'];

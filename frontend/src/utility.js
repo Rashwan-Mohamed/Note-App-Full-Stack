@@ -16,14 +16,14 @@ export function timeNow(last) {
 }
 
 const API_URL = 'http://localhost:8888/notes';
-const EDIT_URL = 'http://localhost:8888/editNote';
-const DELETE_URL = 'http://localhost:8888/deleteNote';
-const TAGS_EDIT_URL = 'http://localhost:8888/editTags';
-const NEW_NOTE_URL = 'http://localhost:8888/newNote';
-const GET_USER_URL = 'http://localhost:8888/getUser';
-const INSERT_USER_URL = 'http://localhost:8888/addUser';
+const EDIT_URL = 'http://localhost:8888/note';
+const DELETE_URL = 'http://localhost:8888/note';
+const TAGS_EDIT_URL = 'http://localhost:8888/tags';
+const NEW_NOTE_URL = 'http://localhost:8888/note';
+const GET_USER_URL = 'http://localhost:8888/user';
+const INSERT_USER_URL = 'http://localhost:8888/user';
 const START_NEW_SISSION_URL = 'http://localhost:8888/session';
-const END_SESSION_URL = 'http://localhost:8888/logout';
+const END_SESSION_URL = 'http://localhost:8888/session';
 
 
 
@@ -100,7 +100,7 @@ export const newNoteRequest = async () => {
 }
 export const deleteNote = async (noteId, setActive) => {
     try {
-        const response = await axios.post(DELETE_URL, {
+        const response = await axios.delete(DELETE_URL, {
             id: noteId
         }, {
             headers: {

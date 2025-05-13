@@ -4,39 +4,41 @@ namespace Core;
 
 class Session
 {
+     static function ensureSession()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
     public static function has($key)
     {
+        static::ensureSession();
         return (boolean)static::get($key);
     }
 
     public static function put($key, $value)
     {
+        static::ensureSession();
         $_SESSION[$key] = $value;
     }
 
     public static function get($key, $default = null)
     {
-        return $_SESSION['_flash'][$key] ?? $_SESSION[$key] ?? $default;
+        static::ensureSession();
+        return $_SESSION[$key] ?? $default;
     }
 
-
-    public static function flash($key, $value)
-    {
-        $_SESSION['_flash'][$key] = $value;
-    }
-
-    public static function unflash()
-    {
-        unset($_SESSION['_flash']);
-    }
 
     public static function flush()
     {
+        static::ensureSession();
         $_SESSION = [];
     }
 
     public static function destroy()
     {
+        static::ensureSession();
         static::flush();
         session_destroy();
         $params = session_get_cookie_params();

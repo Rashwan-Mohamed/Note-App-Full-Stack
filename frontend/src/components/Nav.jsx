@@ -12,9 +12,8 @@ export default function Nav({
     showNote,
 }) {
     let navigate = useNavigate()
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated, user, resetAuth } = useAuth();
     let username = user?.username;
-    console.log(isAuthenticated, user, 'RASHWANN');
 
     const handleLogout = async () => {
         await logout()
@@ -58,8 +57,8 @@ export default function Nav({
                     </svg>
                 </div>
             )}
-            {username && <h3>Welcome {username}</h3>
-            }
+            <h3>{username ? `Welcome ${username}` : 'Hi Guest'}</h3>
+
             <h3 className={showNote ? "AllArchived" : ''}>
                 {!isArchived ? "All" : "Archived"} Notes
             </h3>
@@ -91,7 +90,10 @@ export default function Nav({
                     </svg>
                 </button>
                 <div className="ctbtns" >
-                    {isAuthenticated && <button onClick={() => handleLogout()} >Sign Out</button>}
+                    {isAuthenticated && <button onClick={() => {
+                        handleLogout()
+                        resetAuth()
+                    }} >Sign Out</button>}
                     {/* <button>Register</button> */}
                 </div>
             </div>
