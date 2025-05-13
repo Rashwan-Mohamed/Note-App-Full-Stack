@@ -1,0 +1,1101 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+*,
+*::after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", serif;
+}
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --btn-primary-background: var(--blue-500);
+  --color-attribute: hsl(228, 45%, 44%);
+  --neutral-950: #0e121b;
+  --neutral-900: #191b25;
+  --neutral-800: #232530;
+  --neutral-700: #2b303b;
+  --neutral-600: #525866;
+  --neutral-500: #717784;
+  --neutral-400: #232530;
+  --neutral-300: #cacfd8;
+  --neutral-200: #e0e4ea;
+  --neutral-100: #f3f5f8;
+  --neutral-50: #f5f7fa;
+  --blue-700: #2547d0;
+  --blue-500: #335cff;
+  --blue-50: #ebf1ff;
+  --green-500: #21c16b;
+  --green-100: @191B25;
+  --red-500: #fb3748;
+  --red-100: #ffd5d8;
+  --spacing-0: 0;
+  --spacing-025: 2px;
+  --spacing-050: 4px;
+  --spacing-075: 6px;
+  --spacing-100: 8px;
+  --spacing-150: 12px;
+  --spacing-200: 16px;
+  --spacing-250: 20px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-500: 40px;
+  --spacing-600: 48px;
+  --spacing-800: 64px;
+  --spacing-1000: 80px;
+  --radius-0: 0;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-full: 999px;
+}
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--neutral-200);
+}
+a {
+  text-decoration: none;
+  color: var(--neutral-200);
+}
+ul {
+  list-style: none;
+}
+input {
+  border: none;
+  appearance: none;
+  outline: none;
+}
+body {
+  background-color: var(--neutral-950);
+  color: var(--neutral-200);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+main {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.3fr auto 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
+main nav {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+  height: fit-content;
+}
+
+main > aside:nth-child(2) {
+  grid-row: 1/-1;
+  grid-column: 1/2;
+}
+
+#root {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+  width: 100%;
+}
+
+main > aside {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  padding-right: 1rem;
+  padding-left: 0.75rem;
+  border-right: 1px solid var(--neutral-700);
+}
+
+.asideHeader {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--neutral-700);
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.asideHeader > button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itsLife {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 5px;
+}
+.itsLife > span {
+  font-size: 15px;
+  font-weight: 500;
+}
+.Greyone {
+  text-transform: capitalize;
+  color: var(--neutral-500);
+  font-size: 13px;
+}
+.singleTag {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 15px;
+}
+.singleTag:hover {
+  background-color: rgba(128, 128, 128, 0.329);
+  border-radius: 5px;
+  padding: 8px;
+}
+.manyTags {
+  display: flex;
+  flex-direction: column;
+  gap: 5px 0;
+}
+.sectionTh {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+}
+.btnLight {
+  border-radius: 5px;
+  padding: 8px;
+}
+.btnLight:hover {
+  background-color: rgba(128, 128, 128, 0.329);
+}
+
+.btnHovered {
+  color: white;
+}
+.btnHovered .hoverSVGe path {
+  stroke: var(--blue-700);
+}
+nav h3 {
+  font-size: 25px;
+  font-weight: 700;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--neutral-700);
+}
+.createNew {
+  background-color: var(--blue-500);
+  border-radius: 5px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.sectionNotee {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.createNew {
+  margin-bottom: 1.5rem;
+}
+
+.ticles > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+.clickNote {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px 5px;
+}
+.clickNote:hover {
+  background-color: var(--neutral-700);
+}
+.clickNote > h4 {
+  font-size: 17px;
+}
+
+.clickNote > div {
+  display: flex;
+  gap: 0 5px;
+}
+
+.clickNote > div > span {
+  background-color: var(--neutral-600);
+  font-size: 13px;
+  border-radius: 2px;
+  padding: 1px 4px;
+}
+
+.clickNote > p {
+  font-size: 13px;
+  color: var(--neutral-500);
+}
+.sectionNotee {
+  margin-left: 1.5rem;
+}
+nav {
+  padding-left: 1.5rem;
+}
+main > aside {
+  padding-top: 1rem;
+}
+
+nav {
+  padding-right: 2rem;
+  padding-top: 15px;
+  padding-bottom: 1rem;
+}
+
+.rightNav {
+  display: flex;
+  flex-direction: row;
+  gap: 0 10px;
+}
+
+.rightNav {
+  justify-content: center;
+  align-items: center;
+}
+
+.searck {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searck > input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border: 1px solid var(--neutral-500);
+  border-radius: 5px;
+  padding: 12px 1rem 12px 35px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+  width: 300px;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="%23717784" fill-rule="evenodd" d="M11.248 3.5a7.289 7.289 0 1 0 0 14.577 7.289 7.289 0 0 0 0-14.577ZM2.46 10.79a8.789 8.789 0 1 1 17.577 0 8.789 8.789 0 0 1-17.577 0Z" clip-rule="evenodd"/><path fill="%23717784" fill-rule="evenodd" d="m16.736 15.648 5.616 5.6-1.06 1.063-5.615-5.601 1.06-1.062Z" clip-rule="evenodd"/></svg>');
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+.searck > input:focus {
+  border: 1px solid var(--neutral-300);
+}
+.searck > input::placeholder {
+  text-transform: capitalize;
+}
+
+.mino {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 50px 150px auto 50px;
+  max-height: 100vh;
+}
+
+.noteAside {
+  grid-row: 1/-1;
+  grid-column: 2;
+}
+
+.ticles > ul {
+  overflow: scroll;
+}
+
+body {
+  overflow: hidden;
+}
+
+.sectionNotee {
+  overflow: scroll;
+}
+
+.mino {
+  grid-template-rows: min-content auto min-content;
+}
+
+.mino > footer:nth-child(4) {
+  padding: 1rem;
+}
+
+.noteInfo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
+  border-bottom: 1px solid var(--neutral-400);
+}
+
+.mainContent {
+  padding: 1rem;
+}
+
+div.oneEd {
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 200px 150px;
+}
+
+div.oneEd * {
+  place-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+.ponEn {
+  gap: 10px;
+}
+.mainContent {
+  white-space: pre-line;
+  border-bottom: 1px solid var(--neutral-400);
+}
+.noteAside {
+  display: flex;
+  flex-direction: column;
+}
+
+.fotbtnsv,
+.ftbtn {
+  padding: 8px;
+  background-color: var(--blue-500);
+  border-radius: var(--radius-4);
+  font-weight: 600;
+  font-size: 13px;
+  transition: all 0.2s ease-in-out;
+}
+.fotbtncn {
+  background-color: var(--neutral-800);
+  color: var(--neutral-500);
+}
+
+.fotbtnsv:hover {
+  background-color: var(--blue-700);
+}
+.fotbtncn:hover {
+  background-color: var(--neutral-700);
+  color: var(--neutral-300);
+}
+.mino > footer:nth-child(4) {
+  display: flex;
+  flex-direction: row;
+  gap: 0 15px;
+}
+
+.noteAside {
+  padding: 0 1rem;
+  gap: 10px 0;
+  width: 300px;
+  border-left: 1px solid var(--neutral-400);
+}
+
+.asideBtns {
+  border: 1px solid var(--neutral-500);
+  border-radius: var(--radius-8);
+  padding: 8px 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0 10px;
+  transition: all 0.2s ease-in-out;
+}
+.asideBtns:hover {
+  border: 1px solid var(--neutral-600);
+}
+#textAreas {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  resize: none;
+}
+
+.tmpMessage {
+  position: absolute;
+  background-color: white;
+  color: var(--neutral-600);
+  padding: 12px;
+  border-radius: var(--radius-4);
+  margin: auto;
+  top: 20px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+nav {
+  grid-row: 1/2;
+  height: fit-content;
+  grid-column: 2/-1;
+}
+
+.sectionNotee {
+  grid-column: 2/3;
+}
+
+/* Element | http://localhost:5173/ */
+
+.finalWarning {
+  width: fit-content;
+  background-color: var(--neutral-400);
+  padding: 1.5rem;
+  height: 250px;
+  border-radius: var(--radius-16);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.wrapperLay {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(22, 22, 22, 0.322);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* Element | http://localhost:5173/ */
+
+.sureBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* Element | http://localhost:5173/ */
+
+.finalWarning > p:nth-child(1) {
+  padding-top: 2rem;
+}
+
+/* Inline #1 | http://localhost:5173/ */
+
+.finalWarning {
+  /* height: 250px; */
+  height: 185px;
+  place-self: center;
+}
+
+.finalWarning > p:nth-child(1) {
+  /* padding-top: 2rem; */
+  padding-top: 1rem;
+  text-transform: capitalize;
+}
+
+.fotbtnsv,
+.ftbtn {
+  text-transform: capitalize;
+}
+.suDo:hover {
+  background-color: var(--blue-700);
+}
+
+.editNote {
+  padding: 5px;
+  background-color: var(--blue-500);
+  border-radius: var(--radius-4);
+  font-weight: 500;
+  font-size: 13px;
+  transition: background-color 0.2s ease-in-out;
+}
+.editNote:hover {
+  background-color: var(--blue-700);
+}
+
+div.oneEd:nth-child(3) {
+  grid-template-columns: 200px 150px 1fr;
+}
+
+.editNote {
+  place-self: flex-end;
+}
+#titleInput {
+  color: var(--neutral-200);
+  font-size: 24px;
+  background-color: transparent;
+  font-weight: 700;
+}
+
+div.oneEd:nth-child(3) {
+  grid-template-columns: 200px 100px 1fr;
+}
+
+.editNote {
+  place-self: flex-end !important;
+}
+
+.tagsWrapper {
+  flex-direction: row;
+  gap: 0 10px;
+}
+
+div.tGAS {
+  padding: 4px;
+  background-color: var(--neutral-400);
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  font-weight: 500;
+}
+.addTag {
+  background-color: var(--neutral-400);
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 4px;
+  color: white;
+  font-weight: 500;
+  width: min-content;
+  max-width: fit-content;
+  width: 50px;
+}
+div.oneEd {
+  grid-template-columns: 200px auto;
+}
+.lastoneEd {
+  grid-template-columns: 200px auto 1fr !important;
+}
+.uniqueTitle {
+  color: var(--red-500);
+  text-transform: capitalize;
+  font-size: 13px;
+}
+
+main {
+  grid-template-columns: 0.3fr min-content 1fr;
+}
+
+.sectionNotee {
+  padding-right: 10px;
+  width: 300px;
+}
+main > aside {
+  overflow-y: scroll;
+}
+
+.clickNote > div {
+  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clickNote > div > span {
+  width: fit-content;
+}
+.createNew {
+  transition: all 0.3s ease-in-out;
+}
+
+.createNew:hover {
+  background-color: var(--blue-700);
+}
+::-webkit-scrollbar {
+  height: 1px;
+  width: 1px;
+  background: #000;
+  background-color: var(--neutral-900);
+  height: 0;
+  visibility: hidden;
+}
+.spanner {
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  top: 20rem;
+  left: 0;
+  background-color: var(--blue-500);
+  transition: background-color 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.spanner:hover {
+  background-color: var(--blue-700);
+}
+.moveLift {
+  transform: translateX(-100%);
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  /* display: none; */
+  /* overflow: hidden; */
+}
+.hideSideOut {
+  text-align: center;
+  background-color: var(--neutral-800);
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-bottom: 7px;
+}
+.eraseAll {
+  display: none;
+  visibility: hidden;
+  overflow: hidden;
+  height: 0;
+  width: 0;
+}
+.notActiveNote {
+  grid-template-columns: 0.5fr 1fr;
+  gap: 0 2rem;
+}
+.activeNote {
+  grid-template-columns: 1fr;
+}
+/* Element | http://localhost:5173/ */
+
+.signInForm {
+  margin: auto;
+  width: fit-content;
+  padding: 2rem;
+  background-color: black;
+  background-color: var(--color-attribute);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px 0;
+  background-color: var(--blue-700);
+  background-color: #4660d47e;
+  width: 600px;
+}
+.signInForm h1 {
+  text-align: center;
+}
+.FORMSINGLE {
+  display: flex;
+  flex-direction: column;
+  gap: 17px 0;
+  font-size: 15px;
+}
+.FORMSINGLE input {
+  background: transparent;
+  outline: none;
+  border: none;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: white;
+  padding: 10px 15px;
+}
+.controllBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.btas {
+  padding: 12px 7px !important ;
+}
+.putFrslice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+.errors {
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.sectionWrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ctbtns {
+  display: flex;
+  flex-direction: row;
+  gap: 0 10px;
+}
+/*   1450px and bigger    */
+@media screen and (min-width: 1450px) {
+}
+
+/*   1250px-1450px */
+@media screen and (max-width: 1450px) {
+  main {
+    grid-template-columns: 0.3fr 0.4fr 1fr;
+  }
+
+  .sectionNotee {
+    width: fit-content;
+  }
+
+  .mino {
+    grid-template-columns: 1fr 0.3fr;
+  }
+
+  .noteAside {
+    gap: 30px 0;
+    width: fit-content;
+    padding: 0;
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+
+  .asideBtns {
+    text-align: center;
+    justify-content: center;
+  }
+  .clickNote > h4 {
+    font-size: 15px;
+  }
+}
+
+/*   1025px-1250px */
+
+@media screen and (max-width: 1250px) {
+  main > aside {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  main {
+    grid-template-columns: 0.3fr 0.3fr 1fr;
+  }
+  .clickNote > h4 {
+    font-size: 14px;
+  }
+  .mino {
+    grid-template-columns: 1fr 0.4fr;
+  }
+
+  #titleInput {
+    font-size: 20px;
+  }
+
+  .itsLife > span {
+    font-size: 13px;
+  }
+
+  .singleTag {
+    font-size: 13px;
+  }
+
+  .clickNote > div > span {
+    font-size: 11px;
+    padding: 1px 2px;
+  }
+
+  .clickNote > p {
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .createNew {
+    padding: 0.6rem 0.6rem;
+    font-size: 13px;
+  }
+
+  .asideBtns {
+    padding: 8px 3px;
+    gap: 0 5px;
+  }
+
+  .sectionNotee {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+/*   768px-1025px */
+@media screen and (max-width: 1025px) {
+  .mino {
+    grid-template-columns: 1fr min-content;
+  }
+  .asideBtns {
+    padding: 3px;
+  }
+  .sectionNotee {
+    padding-right: 5px;
+  }
+  .noteAside {
+    border-left: none;
+  }
+
+  .btnLight {
+    padding: 8px 2px;
+  }
+
+  main {
+    grid-template-columns: min-content 0.3fr 1fr;
+  }
+  .asideHeader > button {
+    justify-content: center;
+  }
+  .asideHeader {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .createNew {
+    font-size: 12px;
+    padding: 10px 2px;
+  }
+  .sectionNotee {
+    margin-left: 2px;
+    margin-right: 3px;
+  }
+
+  .noteInfo {
+    padding: 5px;
+  }
+
+  .mainContent {
+    padding: 5px;
+  }
+
+  .noteAside {
+    padding: 0 10px 0 5px;
+  }
+  main > aside:nth-child(2) {
+    grid-row: 2/-1;
+    padding-top: 0;
+  }
+  main > nav {
+    grid-column: 1/-1;
+    margin-bottom: 1rem;
+    padding-bottom: 14px;
+  }
+  .asideHeader {
+    margin-top: 0;
+  }
+  .noteAside {
+    padding-top: 11rem;
+    padding-left: 0;
+  }
+  .mino > footer:nth-child(4) {
+    padding: 1rem 0;
+  }
+  .fotbtnsv,
+  .ftbtn {
+    padding: 5px;
+    height: fit-content;
+  }
+  .mino > footer:nth-child(4) {
+    padding: 15px 10px;
+    height: fit-content;
+    grid-row: 3/4;
+  }
+  .mino {
+    grid-template-rows: min-content 1fr auto;
+  }
+}
+
+/*   500px-768px */
+
+@media screen and (max-width: 768px) {
+  .mino {
+    padding-left: 1rem;
+    padding-right: 10px;
+    gap: 25px 0;
+  }
+
+  .noteInfo {
+    gap: 10px 0;
+  }
+
+  .mino {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mainContent {
+    height: max-content;
+    height: 100%;
+  }
+
+  .mino > header:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stuffNote {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0 20px;
+  }
+
+  .goBackNote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .asideBtns {
+    border: none;
+  }
+
+  .editNote {
+    height: 100%;
+    place-items: center;
+    place-self: center !important;
+  }
+  .twinBrothers {
+    display: flex;
+    gap: 0 15px;
+  }
+
+  .AllArchived {
+    display: none;
+  }
+
+  .rightNav {
+    display: none;
+  }
+  #titleInput {
+    font-size: 20px;
+    font-size: 25px;
+    padding-bottom: 15px;
+  }
+  .noteInfo {
+    padding-bottom: 1.25rem;
+  }
+  div.oneEd {
+    display: flex;
+    justify-content: flex-start;
+    justify-content: space-between;
+  }
+  .notActiveNote > nav {
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+  }
+  nav {
+    grid-column: 1/-1;
+  }
+}
+/*   max width 500 */
+@media screen and (max-width: 500px) {
+  .stuffNote {
+    gap: 0 5px;
+  }
+  .mino {
+    justify-content: center;
+  }
+
+  .activeNote > nav:nth-child(1) {
+    padding-right: 0;
+    padding-left: 10px;
+    width: 100%;
+  }
+
+  .mino {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .mino > header:nth-child(1) {
+    padding-right: 5px;
+  }
+
+  #titleInput {
+    padding-left: 10px;
+  }
+
+  /* Inline #1 | http://localhost:5173/ */
+
+  div.oneEd * {
+    flex-wrap: wrap;
+  }
+
+  .twinBrothers {
+    gap: 0 7px;
+  }
+
+  .editNote {
+    padding: 5px 2px;
+    font-size: 11px;
+  }
+
+  button.ftbtn:nth-child(1) {
+    padding: 2px;
+    font-size: 11px;
+    padding: 5px 2px;
+  }
+
+  button.ftbtn:nth-child(2) {
+    padding: 2px;
+    font-size: 11px;
+    padding: 5px 2px;
+  }
+
+  button.asideBtns:nth-child(2) > svg:nth-child(1) {
+    width: 20px;
+  }
+
+  button.asideBtns:nth-child(1) > svg:nth-child(1) {
+    width: 20px;
+  }
+  #titleInput {
+    font-size: 10px;
+    padding-left: 0;
+    font-size: 5vw;
+  }
+
+  div.oneEd:nth-child(2) > p:nth-child(2) {
+    font-size: 13px;
+  }
+
+  div.oneEd:nth-child(3) > p:nth-child(2) {
+    font-size: 13px;
+  }
+
+  div.oneEd:nth-child(2) {
+    font-size: 13px;
+  }
+
+  /* Inline #1 | http://localhost:5173/ */
+
+  div.oneEd {
+    font-size: 13px;
+  }
+}
