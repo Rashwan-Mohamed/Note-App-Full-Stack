@@ -21,7 +21,7 @@ class Authenticator
         // Always start with a fresh session
         session_regenerate_id(true);
         // Set user data after regenerating session
-        $_SESSION['user'] = ['email' => $user['email'], 'id' => $user['userId'], 'username' => $user['userName']];
+        Session::put('user', ['email' => $user['email'], 'id' => $user['userId'], 'username' => $user['userName']]);
         return $user['userId'];
     }
 

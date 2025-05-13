@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 export const useAuth = () => {
@@ -6,25 +6,31 @@ export const useAuth = () => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        axios.get('http://localhost:8888/checkAuth', { withCredentials: true })
-            .then(response => {
-                if (response.data.authenticated) {
-                    setIsAuthenticated(true);
-                    setUser(response.data.user);
-                } else {
-                    setIsAuthenticated(false);
-                    setUser(null);
-                }
-            })
-            .catch(() => {
+    const checkAuthStatus = useCallback(async () => {
+        try {
+            const response = await axios.get('http://localhost:8888/checkAuth',
+                { withCredentials: true });
+            if (response.data.user) {
+                setIsAuthenticated(true);
+                setUser(response.data.user);
+            } else {
                 setIsAuthenticated(false);
                 setUser(null);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
+            }
+        } catch (error) {
+            setIsAuthenticated(false);
+            setUser(null);
+        }
+        finally {
+            setIsLoading(false)
+        }
     }, []);
-
-    return { isAuthenticated, user, isLoading };
+    const resetAuth = () => {
+        setIsAuthenticated(false);
+        setUser(null);
+    };
+    useEffect(() => {
+        checkAuthStatus();
+    }, [checkAuthStatus]);
+    return { isAuthenticated, user, isLoading, resetAuth };
 };
