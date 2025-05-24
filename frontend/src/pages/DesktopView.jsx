@@ -1,59 +1,25 @@
-/* eslint-disable react/prop-types */
-import Nav from "./Nav.jsx";
-import Aside from "../components/Aside.jsx";
-import Notes from "./Notes.jsx";
-import ViewNote from "../components/ViewNote.jsx";
-import { ViewNoteAssure } from "../components/ViewNoteAssure.jsx";
 
-export default function DesktopView({ params }) {
+import Aside from "../components/organisms/Aside.jsx";
+import Notes from "./Notes.jsx";
+import ViewNote from "../components/templatess/ViewNote.jsx";
+import { ViewNoteAssure } from "../components/atoms/ViewNoteAssure.jsx";
+import { useGlobalContext } from "../components/NoteContext.jsx";
+
+export default function DesktopView() {
     const {
         note = [],
-        handleEditNote,
         chosen,
-        handleTagSelect,
-        isArchived,
-        handleNoteState,
-        width,
-        handleCreatNewNote,
-        handleSelectNote,
-        searchQuery,
-        setSearchQuery,
-        trackTagsChange,
-        setActive
-    } = params;
+    } = useGlobalContext();
 
     return (<>
         {" "}
-        <Nav
-            width={width}
-            isArchived={isArchived}
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-        ></Nav>
         <Aside
-            handleTagSelect={handleTagSelect}
-            isArchived={isArchived}
-            handleNoteState={handleNoteState}
-            handleSelectNote={handleSelectNote}
-            note={note}
         ></Aside>
         <Notes
-            handleCreatNewNote={handleCreatNewNote}
-            handleSelectNote={handleSelectNote}
-            data={note}
-            isArchived={isArchived}
-            setActive={setActive}
         ></Notes>
         <ViewNoteAssure chosen={note[chosen]}>
             <ViewNote
-                note={note}
-                handleEditNote={handleEditNote}
-                chosen={note[chosen]}
-                chosState={chosen}
-                trackTagsChange={trackTagsChange}
             ></ViewNote>
         </ViewNoteAssure>
-
-
     </>)
 }

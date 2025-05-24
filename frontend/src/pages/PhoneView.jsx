@@ -1,65 +1,29 @@
-import Nav from "./Nav.jsx";
-import ViewNote from "../components/ViewNote.jsx";
-import Aside from "../components/Aside.jsx";
+
+import ViewNote from "../components/templatess/ViewNote.jsx";
+import Aside from "../components/organisms/Aside.jsx";
 import Notes from "./Notes.jsx";
-import {ViewNoteAssure} from "../components/ViewNoteAssure.jsx";
+import { ViewNoteAssure } from "../components/atoms/ViewNoteAssure.jsx";
+import { useGlobalContext } from "../components/NoteContext.jsx";
 
 
-export function PhoneView({params}) {
+export function PhoneView() {
     const {
         note = [],
-        handleEditNote,
         chosen,
-        handleTagSelect,
-        isArchived,
-        handleNoteState,
-        width,
-        handleCreatNewNote,
-        handleSelectNote,
-        searchQuery,
-        setSearchQuery,
-        trackTagsChange,
-        setActive,
-        showNote,
-        setShowNote
-    } = params;
+        showNote
+    } = useGlobalContext();
     return <>
-        <Nav
-            showNote={showNote}
-            width={width}
-            isArchived={isArchived}
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-        ></Nav>
+
         {showNote ? (<ViewNoteAssure chosen={note[chosen]}>
-                    <ViewNote
-                        showNote={showNote}
-                        setShowNote={setShowNote}
-                        note={note}
-                        handleEditNote={handleEditNote}
-                        chosen={note[chosen]}
-                        chosState={chosen}
-                        trackTagsChange={trackTagsChange}
-                    />
-                </ViewNoteAssure>
-            )
+            <ViewNote />
+        </ViewNoteAssure>
+        )
             : (<>
-                    <Aside
-                        handleTagSelect={handleTagSelect}
-                        isArchived={isArchived}
-                        handleNoteState={handleNoteState}
-                        note={note}
-                        handleSelectNote={handleSelectNote}
-                    ></Aside>
-                    <Notes
-                        width={width}
-                        setShowNote={setShowNote}
-                        handleCreatNewNote={handleCreatNewNote}
-                        handleSelectNote={handleSelectNote}
-                        data={note}
-                        isArchived={isArchived}
-                    ></Notes>
-                </>
+                <Aside
+                ></Aside>
+                <Notes
+                ></Notes>
+            </>
             )}
     </>
 }

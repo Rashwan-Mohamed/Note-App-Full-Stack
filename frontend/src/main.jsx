@@ -13,9 +13,7 @@ createRoot(document.getElementById("root")).render(
         <Routes>
             <Route path="/" element={<Index />}>
                 <Route index element={<SignIn />} />
-                <Route path="guestnotes" element={<App id="guest" />} />
                 <Route path="register" element={<Register />} />
-
                 {/* Protected routes here */}
                 <Route element={<ProtectedRoute />}>
                     <Route path="notes" element={<App />} />

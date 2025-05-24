@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
 import Form from './Form.jsx'
+import SignGuest from '../components/SignGuest.jsx'
 
 export default function SignIn() {
     return (
@@ -16,7 +17,7 @@ export default function SignIn() {
                             <Link className='ftbtn btas' to='/register'>Register a new Account</Link>
                         </li>
                         <li>
-                            <Link className='ftbtn btas' to='/guestnotes'>Contiune As a guest</Link>
+                            <SignGuest></SignGuest>
                         </li>
                     </ul>
                 </section>

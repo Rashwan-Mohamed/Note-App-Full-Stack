@@ -781,7 +781,9 @@ main > aside {
   right: 0;
   background-color: var(--neutral-950);
 }
-
+.controllBtns {
+  align-items: center;
+}
 /*   1450px and bigger    */
 @media screen and (min-width: 1450px) {
 }

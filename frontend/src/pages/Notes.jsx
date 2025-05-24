@@ -1,8 +1,15 @@
-/* eslint-disable react/prop-types */
+
+import { useEffect, useState } from "react";
+import { useGlobalContext } from "../components/NoteContext.jsx";
 import { formatDate } from "../utility.js";
 
 
-function Notes({ data = [], handleSelectNote, handleCreatNewNote, setShowNote, width, isArchived, setActive }) {
+function Notes() {
+    const { note, handleSelectNote, handleCreatNewNote, setShowNote, width } = useGlobalContext()
+    const [data, setData] = useState(note ?? [])
+    useEffect(() => {
+        setData(note ?? [])
+    }, [note])
 
     return (
         <section className="sectionNotee">
@@ -14,7 +21,7 @@ function Notes({ data = [], handleSelectNote, handleCreatNewNote, setShowNote, w
             <article className="ticles">
                 <ul>
                     {data.map((note, index) => {
-                        const { title, tags, content, lastEdited, isArchived } = note;
+                        const { title, tags, content, lastEdited, isArchived, id } = note;
                         return (
                             <li
                                 onClick={() => {
@@ -23,7 +30,7 @@ function Notes({ data = [], handleSelectNote, handleCreatNewNote, setShowNote, w
                                     }
                                     handleSelectNote(index);
                                 }}
-                                key={title}
+                                key={id}
                                 className="clickNote"
                             >
                                 <h4>{title}</h4>

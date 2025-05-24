@@ -1,8 +1,10 @@
-import React from 'react'
+
 import Form from './Form.jsx'
+import SignGuest from '../components/SignGuest.jsx'
 import { Link } from 'react-router'
 
 export default function Register() {
+
     return (
         <div className="sectionWrapper">
             <section className='signInForm'>
@@ -14,7 +16,7 @@ export default function Register() {
                         <Link className='ftbtn btas' to='/'>Sign In</Link>
                     </li>
                     <li>
-                        <Link className='ftbtn btas' to='/guestnotes'>Contiune As a guest</Link>
+                        <SignGuest />
                     </li>
                 </ul>
             </section>
