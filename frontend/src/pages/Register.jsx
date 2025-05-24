@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from './Form'
+import Form from './Form.jsx'
 import { Link } from 'react-router'
 
 export default function Register() {

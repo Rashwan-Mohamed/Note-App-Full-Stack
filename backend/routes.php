@@ -10,5 +10,5 @@ $router->get('/user', 'controllers/users/getUser.php')->only('guest');
 $router->post('/user', 'controllers/users/addUser.php')->only('guest');
 $router->post('/session', 'controllers/session/store.php');
 $router->get('/checkAuth', 'controllers/users/checkAuth.php');
-$router->get('/logout', 'controllers/session/destroy.php')->only('auth');
+$router->get('/session', 'controllers/session/destroy.php')->only('auth');
 

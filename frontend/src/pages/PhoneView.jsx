@@ -1,8 +1,8 @@
 import Nav from "./Nav.jsx";
-import ViewNote from "./ViewNote.jsx";
-import Aside from "./Aside.jsx";
+import ViewNote from "../components/ViewNote.jsx";
+import Aside from "../components/Aside.jsx";
 import Notes from "./Notes.jsx";
-import {ViewNoteAssure} from "./ViewNoteAssure.jsx";
+import {ViewNoteAssure} from "../components/ViewNoteAssure.jsx";
 
 
 export function PhoneView({params}) {
