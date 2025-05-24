@@ -1,7 +1,7 @@
 
 import Form from './Form.jsx'
-import SignGuest from '../components/SignGuest.jsx'
 import { Link } from 'react-router'
+import SignGuest from "../components/organisms/SignGuest.jsx";
 
 export default function Register() {
 

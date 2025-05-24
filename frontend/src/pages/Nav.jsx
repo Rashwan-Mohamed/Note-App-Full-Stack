@@ -1,23 +1,24 @@
-import { useNavigate } from "react-router";
-import { logout } from "../utility.js";
-import { useAuth } from "../hooks/useAuth.jsx";
+import {useNavigate} from "react-router";
+import {logout} from "../utility.js";
+import {useAuth} from "../hooks/useAuth.jsx";
 import SVG1 from "../assets/SVG Components/SVG1.jsx";
-import { useState } from "react";
+import {useState} from "react";
 import Spinner from "../components/atoms/Spinner.jsx";
-import { useGlobalContext } from "../components/NoteContext.jsx";
-
+import {useGlobalContext} from "../contexts/NoteContext.jsx";
 
 
 export default function Nav() {
     let navigate = useNavigate()
-    const { user, resetAuth } = useAuth();
+    const {user, resetAuth} = useAuth();
     const [isLoading, setIsLoading] = useState('')
     let username = user?.username;
-    const { width,
+    const {
+        width,
         setSearchQuery,
         searchQuery,
         isArchived,
-        showNote, } = useGlobalContext()
+        showNote,
+    } = useGlobalContext()
     const handleLogout = async () => {
         setIsLoading('Signing out')
         try {
@@ -29,10 +30,8 @@ export default function Nav() {
     }
 
 
-
-
     if (isLoading) {
-        return <div className="loading-container"><Spinner /> {isLoading}...</div>;
+        return <div className="loading-container"><Spinner/> {isLoading}...</div>;
     }
     return (
         <nav>
@@ -60,11 +59,12 @@ export default function Nav() {
                 <button className="settings">
                     <SVG1></SVG1>
                 </button>
-                <div className="ctbtns" >
+                <div className="ctbtns">
                     <button onClick={() => {
                         handleLogout()
                         resetAuth()
-                    }} >Sign Out</button>
+                    }}>Sign Out
+                    </button>
                 </div>
             </div>
         </nav>

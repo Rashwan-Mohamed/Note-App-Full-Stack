@@ -1,6 +1,11 @@
-import React from 'react'
 
-export default function TwinBrothers({ setChange, setEdit, newTag, handleNewTag, uniqueTitle }) {
+import React from 'react'
+import { useViewContext } from '../../contexts/ViewNoteConext';
+
+export default function TwinBrothers() {
+    const { setNoteContent, chosen, noteContent, setChange, setEdit, newTag, handleNewTag, uniqueTitle, handleEditNote } = useViewContext()
+    const { title = '', tags = [], content = '', lastEdited, isArchived, naew } = chosen;
+
     return (
         <>
             <button
