@@ -1,17 +1,17 @@
 import UseWidth from "../../hooks/UseWidth.jsx";
-import {useGlobalContext} from "../../contexts/NoteContext.jsx";
+import { useGlobalContext } from "../../contexts/NoteContext.jsx";
 import NoteSmallView from "./NoteSmallView.jsx";
 import NoteWideView from "./NoteWideView.jsx";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import AssureOperation from "../atoms/AssureOperation.jsx";
-import {ViewContext} from "../../contexts/ViewNoteConext.jsx";
+import { ViewContext } from "../../contexts/ViewNoteConext.jsx";
 
 
 function ViewNote() {
     const width = UseWidth();
-    const {handleEditNote, note, setShowNote, trackTagsChange, chosen: frozen} = useGlobalContext();
+    const { handleEditNote, note, setShowNote, trackTagsChange, chosen: frozen } = useGlobalContext();
     const chosen = note[frozen]
-    const {title = '', tags = [], content = '', naew} = chosen;
+    const { title = '', tags = [], content = '', naew, isArchived } = chosen;
     const [noteContent, setNoteContent] = useState({
         iContent: content, ititle: title, itags: tags,
     });
@@ -28,13 +28,13 @@ function ViewNote() {
             setEdit(() => false);
             setChange(false);
         }
-        setNoteContent({iContent: content, ititle: title, itags: tags});
+        setNoteContent({ iContent: content, ititle: title, itags: tags });
 
         setNewTag("");
     }, [chosen]);
     if (!chosen) {
         return (<section className="mino">
-            <article style={{whiteSpace: "pre-line"}} className="mainContent">
+            <article style={{ whiteSpace: "pre-line" }} className="mainContent">
                 NO NOTES MATCH THIS CRITERIA
             </article>
         </section>);
@@ -50,7 +50,7 @@ function ViewNote() {
         });
         if (!nop) {
             setNoteContent((old) => {
-                return {...old, itags: [...old.itags, newTag]};
+                return { ...old, itags: [...old.itags, newTag] };
             });
             trackTagsChange.add.push(newTag);
         }
@@ -65,7 +65,7 @@ function ViewNote() {
         });
         if (!un) {
             setNoteContent((old) => {
-                return {...old, ititle: title};
+                return { ...old, ititle: title };
             });
             setUniqueName(true);
             setTimeout(() => {
@@ -94,7 +94,7 @@ function ViewNote() {
         noteContent,
         setNoteContent,
         setNewTag,
-        newTag
+        newTag, title, isArchived
     }
     return (
         <ViewContext.Provider value={params}>
@@ -103,7 +103,7 @@ function ViewNote() {
                     <AssureOperation></AssureOperation>}
                 {width < 768 ?
                     <NoteSmallView></NoteSmallView>
-                    : <NoteWideView/>}
+                    : <NoteWideView />}
             </section>
         </ViewContext.Provider>
     );

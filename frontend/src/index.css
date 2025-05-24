@@ -611,6 +611,7 @@ main {
 }
 main > aside {
   overflow-y: scroll;
+  grid-row: 1 / -1;
 }
 
 .clickNote > div {
