@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import UseWidth from "./hooks/UseWidth.jsx";
-import { PhoneView } from './pages/PhoneView.jsx'
+import {PhoneView} from './pages/PhoneView.jsx'
 import DesktopView from './pages/DesktopView.jsx'
-import { Popup } from './components/atoms/Popup.jsx'
+import {Popup} from './components/atoms/Popup.jsx'
 import {
     timeNow, editNoteTag, updateNote, newNoteRequest, deleteNote, fetchNotes,
 
 } from "./utility.js";
-import { NoteContext } from "./components/NoteContext.jsx";
+import {NoteContext} from "./contexts/NoteContext.jsx";
 import Nav from "./pages/Nav.jsx";
 
 function App() {
@@ -43,8 +43,8 @@ function App() {
         if (searchQuery.length) {
             const searchLower = searchQuery.toLowerCase();
             const searchResult = note.filter(({
-                title, tags, content
-            }) => title.toLowerCase().includes(searchLower) || tags.some(tag => tag.toLowerCase().includes(searchLower)) || content?.toLowerCase().includes(searchLower));
+                                                  title, tags, content
+                                              }) => title.toLowerCase().includes(searchLower) || tags.some(tag => tag.toLowerCase().includes(searchLower)) || content?.toLowerCase().includes(searchLower));
             setWorkingNote(searchResult);
         } else {
             reloadNotes();
@@ -66,7 +66,7 @@ function App() {
         if (operation === "edit") {
             let nsa = note.find((note) => {
                 if (note.title === title) {
-                    return { ...note };
+                    return {...note};
                 }
             });
             if (nsa) {
@@ -123,7 +123,7 @@ function App() {
     let params = {
         showNote,
         setShowNote,
-        note,
+        note: workingNote,
         chosen,
         handleTagSelect,
         isArchived,
@@ -135,17 +135,17 @@ function App() {
         handleEditNote,
         handleSelectNote,
         trackTagsChange,
-        setActive
+        setActive, active
     };
 
     return (<>
-        <NoteContext.Provider value={params} >
+        <NoteContext.Provider value={params}>
             <main className={width < 768 ? (showNote ? "activeNote" : "notActiveNote") : ''}>
-                <Popup active={active} setActive={setActive} />
-                <Nav />
+                <Popup/>
+                <Nav/>
                 {width < 768 ? (<>
-                    <PhoneView />
-                </>) : <DesktopView />}
+                    <PhoneView/>
+                </>) : <DesktopView/>}
             </main>
         </NoteContext.Provider>
     </>);

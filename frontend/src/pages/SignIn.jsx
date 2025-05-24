@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router'
+import {Link} from 'react-router'
 import Form from './Form.jsx'
-import SignGuest from '../components/SignGuest.jsx'
+import SignGuest from "../components/organisms/SignGuest.jsx";
 
 export default function SignIn() {
     return (
@@ -11,7 +10,7 @@ export default function SignIn() {
                     <h1>Hello, please Sign In to Access you notes</h1>
                     <Form operation={'signIn'}></Form>
                     <p>not a user?, create a new account or contiune as a guest</p>
-                    <ul className='controllBtns' >
+                    <ul className='controllBtns'>
 
                         <li>
                             <Link className='ftbtn btas' to='/register'>Register a new Account</Link>

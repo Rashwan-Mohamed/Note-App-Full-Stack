@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import SignIn from "./pages/SignIn.jsx";
 import Index from "./index.jsx";
 import Register from "./pages/Register.jsx";
-import { ProtectedRoute } from "./components/ProtectedRoute.jsx";
-ProtectedRoute
+import {ProtectedRoute} from "./components/templatess/ProtectedRoute.jsx";
+
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>

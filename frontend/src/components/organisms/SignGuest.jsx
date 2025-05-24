@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { newSission } from '../../utility';
-import { useNavigate } from 'react-router';
-import Spinner from './Spinner';
+import {useState} from 'react';
+import {newSission} from '../../utility';
+import {useNavigate} from 'react-router';
+import Spinner from "../atoms/Spinner.jsx";
 
 export default function SignGuest() {
     const [isLoading, setIsLoading] = useState(false)
@@ -13,15 +13,14 @@ export default function SignGuest() {
             if (res) {
                 navigate('/notes')
             }
-        }
-        finally {
+        } finally {
             setIsLoading(false)
         }
     }
     if (isLoading) {
-        return <div className="loading-container"><Spinner /> Signing In As A Guest...</div>;
+        return <div className="loading-container"><Spinner/> Signing In As A Guest...</div>;
     }
     return (
-        <button className='ftbtn btas' onClick={() => handleGuestSession()} >Contiune As a guest</button>
+        <button className='ftbtn btas' onClick={() => handleGuestSession()}>Contiune As a guest</button>
     )
 }

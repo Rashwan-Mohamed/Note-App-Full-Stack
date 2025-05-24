@@ -1,11 +1,10 @@
-
-import { useEffect, useState } from "react";
-import { useGlobalContext } from "../components/NoteContext.jsx";
-import { formatDate } from "../utility.js";
+import {useEffect, useState} from "react";
+import {useGlobalContext} from "../contexts/NoteContext.jsx";
+import {formatDate} from "../utility.js";
 
 
 function Notes() {
-    const { note, handleSelectNote, handleCreatNewNote, setShowNote, width } = useGlobalContext()
+    const {note, handleSelectNote, handleCreatNewNote, setShowNote, width} = useGlobalContext()
     const [data, setData] = useState(note ?? [])
     useEffect(() => {
         setData(note ?? [])
@@ -21,7 +20,7 @@ function Notes() {
             <article className="ticles">
                 <ul>
                     {data.map((note, index) => {
-                        const { title, tags, content, lastEdited, isArchived, id } = note;
+                        const {title, tags, lastEdited, id} = note;
                         return (
                             <li
                                 onClick={() => {

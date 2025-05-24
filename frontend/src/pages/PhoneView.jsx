@@ -1,9 +1,8 @@
-
 import ViewNote from "../components/templatess/ViewNote.jsx";
 import Aside from "../components/organisms/Aside.jsx";
 import Notes from "./Notes.jsx";
-import { ViewNoteAssure } from "../components/atoms/ViewNoteAssure.jsx";
-import { useGlobalContext } from "../components/NoteContext.jsx";
+import {ViewNoteAssure} from "../components/atoms/ViewNoteAssure.jsx";
+import {useGlobalContext} from "../contexts/NoteContext.jsx";
 
 
 export function PhoneView() {
@@ -15,15 +14,15 @@ export function PhoneView() {
     return <>
 
         {showNote ? (<ViewNoteAssure chosen={note[chosen]}>
-            <ViewNote />
-        </ViewNoteAssure>
-        )
+                    <ViewNote/>
+                </ViewNoteAssure>
+            )
             : (<>
-                <Aside
-                ></Aside>
-                <Notes
-                ></Notes>
-            </>
+                    <Aside
+                    ></Aside>
+                    <Notes
+                    ></Notes>
+                </>
             )}
     </>
 }

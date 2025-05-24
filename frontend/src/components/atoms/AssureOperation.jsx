@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
-import React from 'react'
+import {useViewContext} from "../../contexts/ViewNoteConext.jsx";
 
-export default function AssureOperation({ sure, setSure, handleEditNote }) {
-    const { operation, title, payload } = sure;
+export default function AssureOperation() {
+    const {sure, setSure, handleEditNote} = useViewContext()
+    const {operation, title, payload} = sure;
     return (
         <div className="wrapperLay">
             {" "}
