@@ -752,6 +752,36 @@ main > aside {
   flex-direction: row;
   gap: 0 10px;
 }
+.BadCredentials {
+  margin-bottom: 5px;
+  height: 0;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #8298ee;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  /* color: rgb(245, 14, 14); */
+}
+.signInForm h1 {
+  color: white;
+  font-size: 22px;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+  z-index: 100;
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: var(--neutral-950);
+}
+
 /*   1450px and bigger    */
 @media screen and (min-width: 1450px) {
 }
@@ -788,7 +818,6 @@ main > aside {
 }
 
 /*   1025px-1250px */
-
 @media screen and (max-width: 1250px) {
   main > aside {
     padding-right: 8px;
@@ -1011,6 +1040,23 @@ main > aside {
   nav {
     grid-column: 1/-1;
   }
+
+  .signInForm {
+    width: 90vw;
+    padding: 2.5rem 1rem;
+  }
+
+  .signInForm h1 {
+    color: white;
+    font-size: 20px;
+  }
+
+  .signInForm > p:nth-child(3) {
+    font-size: 500;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 14px;
+  }
 }
 /*   max width 500 */
 @media screen and (max-width: 500px) {
@@ -1097,5 +1143,32 @@ main > aside {
 
   div.oneEd {
     font-size: 13px;
+  }
+
+  /* Element | http://localhost:5173/ */
+
+  .signInForm > p:nth-child(3) {
+    font-size: 13px;
+  }
+
+  .btas {
+    padding: 10px 0px !important;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .controllBtns {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .controllBtns > li:nth-child(1) {
+    width: 100%;
+  }
+
+  .controllBtns > li:nth-child(2) {
+    width: 100%;
   }
 }

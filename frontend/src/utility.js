@@ -130,7 +130,6 @@ export const getUser = async (email, user = "") => {
         // console.log(userName.exists, 'RASHWAN MOHAMED');
         return userName.exists;
     } catch (error) {
-        console.error('Error fetching user:', error);
         return false
     }
 }
@@ -152,23 +151,24 @@ export const addNewUser = async (email, user, password) => {
 
 }
 
-export const newSission = async (username, email, password) => {
+export const newSission = async (email, password) => {
+    console.log('attempt to start session');
+
     try {
-        const response = await axios.post(START_NEW_SISSION_URL, { username, email, password }, {
+        const response = await axios.post(START_NEW_SISSION_URL, { email, password }, {
             headers: {
                 'Content-Type': 'application/json'
             }
             ,
             withCredentials: true
         });
-
-        console.log('session started!', typeof response.data);
+        console.log('session started!', response.data);
         // setActive(`created`);
         if (response.data) {
             return response.data
         }
     } catch (error) {
-        console.error('failed to start the session:', error);
+        // console.error('failed to start the session:', error);
         return false;
     }
 

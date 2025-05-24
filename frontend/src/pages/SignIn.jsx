@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import Form from './Form'
+import Form from './Form.jsx'
 
 export default function SignIn() {
     return (

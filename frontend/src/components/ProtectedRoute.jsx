@@ -1,11 +1,13 @@
-import { useAuth } from './useAuth';
+import { useAuth } from '../hooks/useAuth.jsx';
 import { Navigate, Outlet } from 'react-router';
+import Spinner from './Spinner.jsx';
 
 export const ProtectedRoute = () => {
     const { isAuthenticated, isLoading } = useAuth();
 
     if (isLoading) {
-        return <div>Loading authentication...</div>; // Or a custom loader/spinner
+        return <div className="loading-container"><Spinner /> Loading Data...</div>;
+        ;
     }
 
     if (!isAuthenticated) {

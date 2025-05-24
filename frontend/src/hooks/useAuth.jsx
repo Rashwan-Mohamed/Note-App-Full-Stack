@@ -31,6 +31,6 @@ export const useAuth = () => {
     };
     useEffect(() => {
         checkAuthStatus();
-    }, [checkAuthStatus]);
+    }, []);
     return { isAuthenticated, user, isLoading, resetAuth };
 };

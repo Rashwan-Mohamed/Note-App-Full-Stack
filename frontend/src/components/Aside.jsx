@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import Tags from "./Tags.jsx";
-import UseWidth from "../UseWidth.jsx";
+import UseWidth from "../hooks/UseWidth.jsx";
 
 function Aside({ note, isArchived, handleSelectNote, handleTagSelect, handleNoteState }) {
     const width = UseWidth();

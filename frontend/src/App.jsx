@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import UseWidth from "./UseWidth";
-import { PhoneView } from './components/PhoneView.jsx'
-import DesktopView from './components/DesktopView.jsx'
+import UseWidth from "./hooks/UseWidth.jsx";
+import { PhoneView } from './pages/PhoneView.jsx'
+import DesktopView from './pages/DesktopView.jsx'
 import { Popup } from './components/Popup.jsx'
 import {
     timeNow, editNoteTag, updateNote, newNoteRequest, deleteNote, fetchNotes,
@@ -24,7 +24,7 @@ function App({ id }) {
     };
 
     const signGuest = async () => {
-        await newSission('guest', 'guest@email.com', '1234567gG!@');
+        await newSission('guest@email.com', '1234567gG!@');
         fetchNotes(handleSettingNotes)
     }
 

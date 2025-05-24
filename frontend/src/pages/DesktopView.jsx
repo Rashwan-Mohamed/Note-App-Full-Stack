@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import Nav from "./Nav.jsx";
-import Aside from "./Aside.jsx";
+import Aside from "../components/Aside.jsx";
 import Notes from "./Notes.jsx";
-import ViewNote from "./ViewNote.jsx";
-import { ViewNoteAssure } from "./ViewNoteAssure.jsx";
+import ViewNote from "../components/ViewNote.jsx";
+import { ViewNoteAssure } from "../components/ViewNoteAssure.jsx";
 
 export default function DesktopView({ params }) {
     const {
