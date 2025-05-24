@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import UseWidth from "../UseWidth";
+import UseWidth from "../UseWidth.jsx";
 import {formatDate} from "../utility.js";
 
 function ViewNote({
