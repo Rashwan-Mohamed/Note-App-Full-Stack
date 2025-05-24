@@ -1,10 +1,10 @@
 import Textarea from '../atoms/Textarea';
 import EditBtn from '../atoms/EditBtn';
 import AddNewTag from '../atoms/AddNewTag';
-import {useViewContext} from '../../contexts/ViewNoteConext';
+import { useViewContext } from '../../contexts/ViewNoteConext';
 import TwinBrothers from '../atoms/TwinBrothers';
 import ChangeTitle from "../atoms/ChangeTitle.jsx";
-import {formatDate} from "../../utility.js";
+import { formatDate } from "../../utility.js";
 import DeArNote from "../atoms/DeArNote.jsx";
 
 
@@ -13,7 +13,7 @@ export default function NoteWideView() {
         chosen,
         change,
     } = useViewContext()
-    const {lastEdited,} = chosen;
+    const { lastEdited } = chosen;
 
 
     return (
@@ -21,11 +21,11 @@ export default function NoteWideView() {
 
             {" "}
             <div className="noteInfo">
-                <ChangeTitle/>
-                <AddNewTag/>
+                <ChangeTitle />
+                <AddNewTag />
                 <div className="oneEd lastoneEd">
                     <p className="ponEn">
-                        <img src="src\assets\images\icon-clock.svg" alt=""/>
+                        <img src="src\assets\images\icon-clock.svg" alt="" />
                         <span>Last Edited</span>
                     </p>
                     <p>{formatDate(lastEdited)}</p>
@@ -33,13 +33,13 @@ export default function NoteWideView() {
                 </div>
             </div>
             <aside className="noteAside">
-                <DeArNote/>
+                <DeArNote />
             </aside>
-            <Textarea/>
+            <Textarea />
             {
                 change && (<footer>
                     {" "}
-                    <TwinBrothers/>
+                    <TwinBrothers />
                 </footer>)
             }
         </>

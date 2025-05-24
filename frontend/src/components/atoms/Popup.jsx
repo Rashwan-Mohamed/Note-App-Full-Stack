@@ -1,9 +1,9 @@
-import {useEffect} from "react";
-import {useGlobalContext} from "../../contexts/NoteContext.jsx";
+import { useEffect } from "react";
+import { useGlobalContext } from "../../contexts/NoteContext.jsx";
 
 
 export function Popup() {
-    const {active, setActive} = useGlobalContext()
+    const { active, setActive } = useGlobalContext()
 
     // MESSAGE POPUP
     useEffect(() => {

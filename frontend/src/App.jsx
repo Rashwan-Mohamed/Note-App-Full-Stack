@@ -1,13 +1,13 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import UseWidth from "./hooks/UseWidth.jsx";
-import {PhoneView} from './pages/PhoneView.jsx'
+import { PhoneView } from './pages/PhoneView.jsx'
 import DesktopView from './pages/DesktopView.jsx'
-import {Popup} from './components/atoms/Popup.jsx'
+import { Popup } from './components/atoms/Popup.jsx'
 import {
     timeNow, editNoteTag, updateNote, newNoteRequest, deleteNote, fetchNotes,
 
 } from "./utility.js";
-import {NoteContext} from "./contexts/NoteContext.jsx";
+import { NoteContext } from "./contexts/NoteContext.jsx";
 import Nav from "./pages/Nav.jsx";
 
 function App() {
@@ -43,8 +43,8 @@ function App() {
         if (searchQuery.length) {
             const searchLower = searchQuery.toLowerCase();
             const searchResult = note.filter(({
-                                                  title, tags, content
-                                              }) => title.toLowerCase().includes(searchLower) || tags.some(tag => tag.toLowerCase().includes(searchLower)) || content?.toLowerCase().includes(searchLower));
+                title, tags, content
+            }) => title.toLowerCase().includes(searchLower) || tags.some(tag => tag.toLowerCase().includes(searchLower)) || content?.toLowerCase().includes(searchLower));
             setWorkingNote(searchResult);
         } else {
             reloadNotes();
@@ -66,7 +66,7 @@ function App() {
         if (operation === "edit") {
             let nsa = note.find((note) => {
                 if (note.title === title) {
-                    return {...note};
+                    return { ...note };
                 }
             });
             if (nsa) {
@@ -86,6 +86,10 @@ function App() {
             trackTagsChange.add = [];
             trackTagsChange.remove = [];
         } else if (operation === "archieve" || operation === "Un-Archive") {
+            console.log(
+                'that operation', title, operation, payload
+            );
+
             let eas = note.find((note) => note.title === title);
             eas.isArchived = eas.isArchived == 1 ? 0 : 1;
             await updateNote(eas.id, eas, operation, setActive);
@@ -141,11 +145,11 @@ function App() {
     return (<>
         <NoteContext.Provider value={params}>
             <main className={width < 768 ? (showNote ? "activeNote" : "notActiveNote") : ''}>
-                <Popup/>
-                <Nav/>
+                <Popup />
+                <Nav />
                 {width < 768 ? (<>
-                    <PhoneView/>
-                </>) : <DesktopView/>}
+                    <PhoneView />
+                </>) : <DesktopView />}
             </main>
         </NoteContext.Provider>
     </>);

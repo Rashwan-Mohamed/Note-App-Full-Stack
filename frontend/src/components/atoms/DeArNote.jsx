@@ -1,16 +1,17 @@
-/* eslint-disable react/prop-types */
+
 import SVG4 from '../../assets/SVG Components/SVG4';
-import {useViewContext} from "../../contexts/ViewNoteConext.jsx";
+import { useViewContext } from "../../contexts/ViewNoteConext.jsx";
 import SVG3 from "../../assets/SVG Components/SVG3.jsx";
 
 export default function DeArNote() {
-    const {setSure, width, title, isArchived} = useViewContext()
+    const { setSure, width, title, isArchived } = useViewContext()
+
     return (
         <>
 
             <button
                 onClick={() => {
-                    setSure({title: title, operation: "delete", content: ""});
+                    setSure({ title: title, operation: "delete", content: "" });
                 }}
                 className="asideBtns"
             >

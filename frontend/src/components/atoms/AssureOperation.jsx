@@ -1,8 +1,9 @@
-import {useViewContext} from "../../contexts/ViewNoteConext.jsx";
+import { useViewContext } from "../../contexts/ViewNoteConext.jsx";
 
 export default function AssureOperation() {
-    const {sure, setSure, handleEditNote} = useViewContext()
-    const {operation, title, payload} = sure;
+    const { sure, setSure, handleEditNote } = useViewContext()
+    const { operation, title, payload } = sure;
+
     return (
         <div className="wrapperLay">
             {" "}
