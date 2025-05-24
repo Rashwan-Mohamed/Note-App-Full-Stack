@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import UseWidth from "./hooks/UseWidth.jsx";
 import { PhoneView } from './pages/PhoneView.jsx'
 import DesktopView from './pages/DesktopView.jsx'
-import { Popup } from './components/Popup.jsx'
+import { Popup } from './components/atoms/Popup.jsx'
 import {
     timeNow, editNoteTag, updateNote, newNoteRequest, deleteNote, fetchNotes,
-    newSission,
-} from "./utility.js";
 
-function App({ id }) {
+} from "./utility.js";
+import { NoteContext } from "./components/NoteContext.jsx";
+import Nav from "./pages/Nav.jsx";
+
+function App() {
     const width = UseWidth();
     const [isArchived, setIsArchived] = useState(0);
     const [note, setNoto] = useState([]);
@@ -23,10 +25,6 @@ function App({ id }) {
         add: [], remove: []
     };
 
-    const signGuest = async () => {
-        await newSission('guest@email.com', '1234567gG!@');
-        fetchNotes(handleSettingNotes)
-    }
 
     const reloadNotes = () => {
         const filtered = note.filter((n) => {
@@ -38,11 +36,7 @@ function App({ id }) {
 
     // USE EFFECT TO FETCH THE NOTES FROM THE DATABASE
     useEffect(() => {
-        if (id === 'guest') {
-            signGuest();
-        } else {
-            fetchNotes(handleSettingNotes)
-        }
+        fetchNotes(handleSettingNotes)
     }, []);
     // SEARCHING FUNCTIONALITY
     useEffect(() => {
@@ -129,7 +123,7 @@ function App({ id }) {
     let params = {
         showNote,
         setShowNote,
-        note: workingNote,
+        note,
         chosen,
         handleTagSelect,
         isArchived,
@@ -143,13 +137,17 @@ function App({ id }) {
         trackTagsChange,
         setActive
     };
+
     return (<>
-        <main className={width < 768 ? (showNote ? "activeNote" : "notActiveNote") : ''}>
-            <Popup active={active} setActive={setActive} />
-            {width < 768 ? (<>
-                <PhoneView params={params} />
-            </>) : <DesktopView params={params} />}
-        </main>
+        <NoteContext.Provider value={params} >
+            <main className={width < 768 ? (showNote ? "activeNote" : "notActiveNote") : ''}>
+                <Popup active={active} setActive={setActive} />
+                <Nav />
+                {width < 768 ? (<>
+                    <PhoneView />
+                </>) : <DesktopView />}
+            </main>
+        </NoteContext.Provider>
     </>);
 }
 
