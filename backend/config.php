@@ -1,5 +1,5 @@
 <?php
-    return ['database' => ['host' => 'localhost',
+    return ['database' => ['host' => 'sql213.infinityfree.com',
         'port' => 3306,
-        'dbname' => 'notes',
+        'dbname' => 'if0_39073653_XXX',
         "charset" => 'utf8mb4']];
