@@ -2,13 +2,13 @@
 
 
     return [
-        'env' => 'local', // change to 'local' when developing locally
+        'env' => 'production', // change to 'local' when developing locally
 
         'database' => [
             'production' => [
                 'host' => 'sql213.infinityfree.com',
                 'port' => 3306,
-                'dbname' => 'if0_39073653_XXX',
+                'dbname' => 'if0_39073653_notes',
                 'charset' => 'utf8mb4',
                 'user' => 'if0_39073653',
                 'password' => 'tTJ2IBAp9aFg',
