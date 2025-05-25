@@ -1,5 +1,6 @@
 <?php
     header("Access-Control-Allow-Origin: https://noteapp.my-board.org");
+    header("Access-Control-Allow-Origin: http://localhost:5173"); // your frontend URL
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
     header("Access-Control-Allow-Credentials: true");

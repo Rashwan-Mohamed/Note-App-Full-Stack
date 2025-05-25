@@ -8,7 +8,7 @@ $container = new Container();
 $container->bind('Core\Database', function () {
     try {
         $config = require base_path('config.php');
-        return new Database($config['database']);
+        return new Database($config);
     } catch (Exception $e) {
         error_log("database binding failed: " . $e->getMessage());
         throw new Exception($e->getMessage());
