@@ -10,7 +10,7 @@
         public mixed $connection;
         public $statement;
 
-        public function __construct($config, $user = 'root', $password = '123321')
+        public function __construct($config, $user = 'if0_39073653', $password = 'tTJ2IBAp9aFg')
         {
             $dsn = 'mysql:' . http_build_query($config, '', ';');
 

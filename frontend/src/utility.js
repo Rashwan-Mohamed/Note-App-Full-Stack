@@ -15,17 +15,18 @@ export function timeNow(last) {
     return last;
 }
 
-const API_URL = 'http://localhost:8888/notes';
-const EDIT_URL = 'http://localhost:8888/note';
-const DELETE_URL = 'http://localhost:8888/note';
-const GET_USER_URL = 'http://localhost:8888/user';
-const NEW_NOTE_URL = 'http://localhost:8888/note';
-const TAGS_EDIT_URL = 'http://localhost:8888/tags';
-const INSERT_USER_URL = 'http://localhost:8888/user';
-const END_SESSION_URL = 'http://localhost:8888/session';
-const START_NEW_SISSION_URL = 'http://localhost:8888/session';
+const API_BASE = import.meta.env.VITE_APP_API_BASE_URL;
+console.log(API_BASE);
 
-
+const API_URL = `${API_BASE}/notes`;
+const EDIT_URL = `${API_BASE}/note`;
+const DELETE_URL = `${API_BASE}/note`;
+const GET_USER_URL = `${API_BASE}/user`;
+const NEW_NOTE_URL = `${API_BASE}/note`;
+const TAGS_EDIT_URL = `${API_BASE}/tags`;
+const INSERT_USER_URL = `${API_BASE}/user`;
+const END_SESSION_URL = `${API_BASE}/session`;
+const START_NEW_SESSION_URL = `${API_BASE}/session`;
 
 export const updateNote = async (noteId, updatedNoteBody, operation, setActive) => {
     console.log('Request sent')
@@ -155,7 +156,7 @@ export const newSission = async (email, password) => {
     console.log('attempt to start session');
 
     try {
-        const response = await axios.post(START_NEW_SISSION_URL, { email, password }, {
+        const response = await axios.post(START_NEW_SESSION_URL, { email, password }, {
             headers: {
                 'Content-Type': 'application/json'
             }

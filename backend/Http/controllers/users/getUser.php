@@ -10,7 +10,7 @@
 // and if true, should log him in and starts a new session
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && !empty($email)) {
         try {
-            $userData = $db->query("SELECT * FROM notes.users WHERE email = :email", ['email' => $email])->findOrFail();
+            $userData = $db->query("SELECT * FROM users WHERE email = :email", ['email' => $email])->findOrFail();
             echo json_encode(["exists" => !empty($userData)]);
         } catch (Exception $e) {
             http_response_code(404);

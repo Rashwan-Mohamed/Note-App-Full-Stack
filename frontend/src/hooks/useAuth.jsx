@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+const API_BASE = import.meta.env.VITE_APP_API_BASE_URL;
 
 export const useAuth = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -8,7 +9,7 @@ export const useAuth = () => {
 
     const checkAuthStatus = useCallback(async () => {
         try {
-            const response = await axios.get('http://localhost:8888/checkAuth',
+            const response = await axios.get(`${API_BASE}/checkAuth`,
                 { withCredentials: true });
             if (response.data.user) {
                 setIsAuthenticated(true);
