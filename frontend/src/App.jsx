@@ -17,7 +17,7 @@ function App() {
     const [workingNote, setWorkingNote] = useState([]);
     const [chosen, setChosen] = useState(0);
     const [searchQuery, setSearchQuery] = useState("");
-    const [tags, setTags] = useState("");
+    const [tags, setTags] = useState([]);
     const [showNote, setShowNote] = useState(true);
     const [active, setActive] = useState(false);
 
@@ -25,13 +25,14 @@ function App() {
         add: [], remove: []
     };
 
-
     const reloadNotes = () => {
         const filtered = note.filter((n) => {
-            return n.isArchived === isArchived && (!tags || n.tags.includes(tags));
+            return n.isArchived === isArchived && (!tags.length || n.tags.some((ele) => tags.includes(ele))
+            );
         });
         setWorkingNote(filtered);
     };
+    console.log(tags);
 
 
     // USE EFFECT TO FETCH THE NOTES FROM THE DATABASE
@@ -57,8 +58,6 @@ function App() {
     }, [note, isArchived]);
     const handleNoteState = (to) => {
         setIsArchived(to ? 0 : 1);
-        // reloadNotes();
-        // console.log('called');
     };
 
     // Function to Edit,Delete Or Archive note
@@ -112,8 +111,17 @@ function App() {
 
     // SET THE CURRENT SELECTED TAG
     const handleTagSelect = (tag) => {
-        setTags(tag);
-        setChosen(0);
+        if (tag === '') {
+            setTags([])
+        }
+        else if (!tags.includes(tag)) {
+            setTags((old) => [...old, tag]);
+            setChosen(0);
+        }
+    };
+    // SET THE CURRENT SELECTED TAG
+    const handleTagRemoval = (tag) => {
+        setTags(() => tags.filter(ta => ta !== tag))
     };
     const handleCreatNewNote = async () => {
         await newNoteRequest(setActive);
@@ -139,7 +147,7 @@ function App() {
         handleEditNote,
         handleSelectNote,
         trackTagsChange,
-        setActive, active
+        setActive, active, tags, handleTagRemoval, allNotes: note
     };
 
     return (<>
