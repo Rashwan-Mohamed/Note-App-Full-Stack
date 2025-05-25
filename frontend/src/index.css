@@ -1072,9 +1072,6 @@ main > aside {
     display: none;
   }
 
-  .rightNav {
-    /* display: none; */
-  }
   #titleInput {
     font-size: 20px;
     font-size: 25px;
@@ -1132,6 +1129,13 @@ main > aside {
     padding: 8px 5px 8px 35px;
     width: fit-content;
     font-size: 11px;
+  }
+
+  .notActiveNote > nav:nth-child(1) {
+    display: flex;
+  }
+  .sectionNotee {
+    width: 100%;
   }
 }
 /*   max width 500 */

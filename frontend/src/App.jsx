@@ -18,7 +18,7 @@ function App() {
     const [chosen, setChosen] = useState(0);
     const [searchQuery, setSearchQuery] = useState("");
     const [tags, setTags] = useState([]);
-    const [showNote, setShowNote] = useState(true);
+    const [showNote, setShowNote] = useState(() => width < 768 ? false : true);
     const [active, setActive] = useState(false);
 
     const trackTagsChange = {
@@ -32,7 +32,6 @@ function App() {
         });
         setWorkingNote(filtered);
     };
-    console.log(tags);
 
 
     // USE EFFECT TO FETCH THE NOTES FROM THE DATABASE
