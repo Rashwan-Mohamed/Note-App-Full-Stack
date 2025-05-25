@@ -53,7 +53,7 @@ export default function Nav() {
                             setSearchQuery(e.target.value);
                         }}
                         type="text"
-                        placeholder={"Search by title, content or tags..."}
+                        placeholder={width > 768 && "Search by title, content or tags..."}
                     />
                 </div>
                 {/* <button className="settings">
