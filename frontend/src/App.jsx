@@ -84,9 +84,7 @@ function App() {
             trackTagsChange.add = [];
             trackTagsChange.remove = [];
         } else if (operation === "archieve" || operation === "Un-Archive") {
-            console.log(
-                'that operation', title, operation, payload
-            );
+
 
             let eas = note.find((note) => note.title === title);
             eas.isArchived = eas.isArchived == 1 ? 0 : 1;
