@@ -1,15 +1,15 @@
-import {useNavigate} from "react-router";
-import {logout} from "../utility.js";
-import {useAuth} from "../hooks/useAuth.jsx";
+import { useNavigate } from "react-router";
+import { logout } from "../utility.js";
+import { useAuth } from "../hooks/useAuth.jsx";
 import SVG1 from "../assets/SVG Components/SVG1.jsx";
-import {useState} from "react";
+import { useState } from "react";
 import Spinner from "../components/atoms/Spinner.jsx";
-import {useGlobalContext} from "../contexts/NoteContext.jsx";
+import { useGlobalContext } from "../contexts/NoteContext.jsx";
 
 
 export default function Nav() {
     let navigate = useNavigate()
-    const {user, resetAuth} = useAuth();
+    const { user, resetAuth } = useAuth();
     const [isLoading, setIsLoading] = useState('')
     let username = user?.username;
     const {
@@ -31,15 +31,15 @@ export default function Nav() {
 
 
     if (isLoading) {
-        return <div className="loading-container"><Spinner/> {isLoading}...</div>;
+        return <div className="loading-container"><Spinner /> {isLoading}...</div>;
     }
     return (
         <nav>
-            {width < 1025 && (
+            {/* {width < 1025 && (
                 <div className="icon">
                     <SVG1></SVG1>
                 </div>
-            )}
+            )} */}
             <h3>{username ? `Welcome ${user?.username}` : 'Hi Guest'}</h3>
 
             <h3 className={showNote ? "AllArchived" : ''}>
@@ -56,9 +56,9 @@ export default function Nav() {
                         placeholder={"Search by title, content or tags..."}
                     />
                 </div>
-                <button className="settings">
+                {/* <button className="settings">
                     <SVG1></SVG1>
-                </button>
+                </button> */}
                 <div className="ctbtns">
                     <button onClick={() => {
                         handleLogout()

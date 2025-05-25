@@ -567,7 +567,7 @@ div.oneEd:nth-child(3) {
   gap: 0 10px;
 }
 
-div.tGAS {
+.tGAS {
   padding: 4px;
   background-color: var(--neutral-400);
   border-radius: 4px;
@@ -785,6 +785,18 @@ main > aside {
 .controllBtns {
   align-items: center;
 }
+.selectedTags {
+  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.selectedTags li {
+  list-style: none;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  width: fit-content;
+}
 /*   1450px and bigger    */
 @media screen and (min-width: 1450px) {
 }
@@ -873,6 +885,10 @@ main > aside {
     margin-left: 5px;
     margin-right: 5px;
   }
+
+  nav h3 {
+    font-size: 23px;
+  }
 }
 
 /*   768px-1025px */
@@ -956,6 +972,39 @@ main > aside {
   }
   .mino {
     grid-template-rows: min-content 1fr auto;
+  }
+
+  .clickNote > h4 {
+    /* font-size: 14px; */
+    font-size: 13px;
+  }
+  #titleInput {
+    /* font-size: 20px; */
+    font-size: 18px;
+  }
+
+  div.oneEd * {
+    font-size: 15px;
+  }
+
+  #textAreas {
+    font-size: 15px;
+  }
+
+  .editNote {
+    font-size: 13px;
+  }
+
+  div.tGAS {
+    font-size: 11px;
+    padding: 2px 5px;
+  }
+  .addTag {
+    padding: 2px 5px;
+  }
+  .editNote {
+    padding: 4px;
+    font-size: 13px !important;
   }
 }
 
@@ -1142,13 +1191,9 @@ main > aside {
     font-size: 13px;
   }
 
-  /* Inline #1 | http://localhost:5173/ */
-
   div.oneEd {
     font-size: 13px;
   }
-
-  /* Element | http://localhost:5173/ */
 
   .signInForm > p:nth-child(3) {
     font-size: 13px;
@@ -1173,5 +1218,46 @@ main > aside {
 
   .controllBtns > li:nth-child(2) {
     width: 100%;
+  }
+
+  .notActiveNote > nav:nth-child(1) {
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  nav h3 {
+    /* font-size: 23px; */
+    font-size: 18px;
+  }
+  main > aside {
+    /* padding-right: 8px; */
+    /* padding-left: 8px; */
+    padding-right: 3px;
+    padding-left: 3px;
+  }
+
+  .notActiveNote {
+    /* gap: 0 2rem; */
+    gap: 0 2px;
+  }
+
+  .singleTag {
+    gap: 0 3px;
+    padding: 8px 2px;
+    flex-direction: row;
+  }
+
+  .singleTag {
+    /* font-size: 13px; */
+    font-size: 12px;
+  }
+
+  li.singleTag > svg {
+    width: 16px;
+  }
+
+  .selectedTags li {
+    font-size: 10px;
   }
 }
