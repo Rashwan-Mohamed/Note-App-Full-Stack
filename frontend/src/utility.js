@@ -15,10 +15,9 @@ export function timeNow(last) {
     return last;
 }
 
-// const API_BASE = import.meta.env.VITE_APP_API_BASE_URL;
-const API_BASE = `http://localhost:8888`
+export const API_BASE = import.meta.env.VITE_APP_API_BASE_URL;
+// export const API_BASE = `http://localhost:8888`
 
-console.log(API_BASE);
 
 const API_URL = `${API_BASE}/notes`;
 const EDIT_URL = `${API_BASE}/editNote`;
