@@ -19,48 +19,16 @@ const API_BASE = import.meta.env.VITE_APP_API_BASE_URL;
 console.log(API_BASE);
 
 const API_URL = `${API_BASE}/notes`;
-const EDIT_URL = `${API_BASE}/note`;
-const DELETE_URL = `${API_BASE}/note`;
+const EDIT_URL = `${API_BASE}/editNote`;
+const DELETE_URL = `${API_BASE}/deleteNote`;
 const GET_USER_URL = `${API_BASE}/user`;
-const NEW_NOTE_URL = `${API_BASE}/note`;
-const TAGS_EDIT_URL = `${API_BASE}/tags`;
+const NEW_NOTE_URL = `${API_BASE}/newNote`;
+const TAGS_EDIT_URL = `${API_BASE}/editTag`;
 const INSERT_USER_URL = `${API_BASE}/user`;
 const END_SESSION_URL = `${API_BASE}/session`;
 const START_NEW_SESSION_URL = `${API_BASE}/session`;
 
-export const updateNote = async (noteId, updatedNoteBody, operation, setActive) => {
-    console.log('Request sent')
 
-    try {
-        const response = await axios.put(EDIT_URL, {
-            body: updatedNoteBody, id: noteId
-        }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-            , withCredentials: true
-        });
-        console.log(response.data);
-        setActive(`${operation}d`);
-    } catch (error) {
-        console.error('Error updating note:', error);
-    }
-};
-export const editNoteTag = async (noteId, tag, operation) => {
-    console.log('Request sent')
-    try {
-        const response = await axios.put(TAGS_EDIT_URL, {
-            body: tag, noteId: noteId, operation
-        }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }, withCredentials: true
-        });
-        console.log(response.data);
-    } catch (error) {
-        console.error('Error updating note:', error);
-    }
-};
 export const fetchNotes = async (setNoto) => {
     try {
         const response = await axios.get(API_URL, {
@@ -83,7 +51,56 @@ export const fetchNotes = async (setNoto) => {
         console.log('ERROR FETCHING NOTES', e);
     }
 }
+export const updateNote = async (noteId, updatedNoteBody, operation, setActive) => {
+    console.log('Request sent');
 
+    try {
+        const response = await axios.post(EDIT_URL,
+            { body: updatedNoteBody, id: noteId },
+            { headers: { 'Content-Type': 'application/json' }, withCredentials: true }
+        );
+
+        console.log('Response:', response.data);
+        if (setActive && typeof setActive === 'function') {
+            setActive(`${operation}d`);
+        }
+    } catch (error) {
+        console.error('Error updating note:', error);
+    }
+};
+export const deleteNote = async (noteId, setActive) => {
+    try {
+        const response = await axios.post(DELETE_URL,
+            { id: noteId }, // <-- this is the request body (data)
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            }
+        );
+        console.log('Note Deleted!', response.data);
+        setActive('deleted');
+    } catch (error) {
+        console.error('Error deleting note:', error);
+    }
+};
+
+export const editNoteTag = async (noteId, tag, operation) => {
+    console.log('Request sent')
+    try {
+        const response = await axios.post(TAGS_EDIT_URL, {
+            body: tag, noteId: noteId, operation
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }, withCredentials: true
+        });
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error updating note:', error);
+    }
+};
 export const newNoteRequest = async () => {
     try {
         const response = await axios.post(NEW_NOTE_URL, { id: 1 }, {
@@ -99,22 +116,6 @@ export const newNoteRequest = async () => {
     }
 
 }
-export const deleteNote = async (noteId, setActive) => {
-    try {
-        const response = await axios.delete(DELETE_URL, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: { id: noteId }, // 🔥 MUST be inside `data`
-            withCredentials: true
-        });
-        console.log('Note Deleted!', response.data);
-        setActive(`deleted`);
-    } catch (error) {
-        console.error('Error deleting note:', error);
-    }
-};
-
 
 export const getUser = async (email, user = "") => {
     try {
