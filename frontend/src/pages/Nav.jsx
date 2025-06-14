@@ -60,7 +60,7 @@ export default function Nav() {
                     <SVG1></SVG1>
                 </button> */}
                 <div className="ctbtns">
-                    <button onClick={() => {
+                    <button className={'editNote signOutButton'}  onClick={() => {
                         handleLogout()
                         resetAuth()
                     }}>Sign Out
