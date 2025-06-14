@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {notifyError, notifySuccess} from "./components/atoms/toastService.js";
 
 export const formatDate = (date) => {
     const fDate = new Date(date);
@@ -50,6 +51,7 @@ export const fetchNotes = async (setNoto) => {
 
     } catch (e) {
         console.log('ERROR FETCHING NOTES', e);
+        notifyError(`ERROR FETCHING NOTES!`);
     }
 }
 export const updateNote = async (noteId, updatedNoteBody, operation, setActive) => {
@@ -62,11 +64,11 @@ export const updateNote = async (noteId, updatedNoteBody, operation, setActive) 
         );
 
         console.log('Response:', response.data);
-        if (setActive && typeof setActive === 'function') {
-            setActive(`${operation}d`);
-        }
+        notifySuccess(`Operation Successfully!`);
     } catch (error) {
         console.error('Error updating note:', error);
+        notifyError(`Operation Failed!`);
+
     }
 };
 export const deleteNote = async (noteId, setActive) => {
@@ -81,9 +83,12 @@ export const deleteNote = async (noteId, setActive) => {
             }
         );
         console.log('Note Deleted!', response.data);
-        setActive('deleted');
+        notifySuccess(`Note Deleted!`)
+
     } catch (error) {
         console.error('Error deleting note:', error);
+        notifyError(`Error deleting note!`);
+
     }
 };
 
@@ -100,6 +105,7 @@ export const editNoteTag = async (noteId, tag, operation) => {
         console.log(response.data);
     } catch (error) {
         console.error('Error updating note:', error);
+        notifyError(`Error updating note!`);
     }
 };
 export const newNoteRequest = async () => {
@@ -111,9 +117,12 @@ export const newNoteRequest = async () => {
             withCredentials: true
         });
         console.log('Note added!', response.data);
+        notifySuccess(`Note Added Successfully!`)
         // setActive(`created`);
     } catch (error) {
-        console.error('Error updating note:', error);
+        console.error('Error adding note:', error);
+        notifyError(`Error adding note!`);
+
     }
 
 }
@@ -130,7 +139,6 @@ export const getUser = async (email, user = "") => {
         }
         );
         const userName = response.data
-        // console.log(userName.exists, 'RASHWAN MOHAMED');
         return userName.exists;
     } catch (error) {
         return false

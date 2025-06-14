@@ -25,8 +25,7 @@
   --neutral-100: #f3f5f8;
   --neutral-50: #f5f7fa;
   --blue-700: #2547d0;
-  --blue-500: rgba(51, 92, 255, 0.22);
-
+  --blue-500: #335cff;
   --blue-50: #ebf1ff;
   --green-500: #21c16b;
   --green-100: #191B25;
@@ -699,15 +698,11 @@ main > aside {
 
 .signInForm {
   margin: auto;
-  width: fit-content;
   padding: 2rem;
-  background-color: black;
-  background-color: var(--color-attribute);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 16px 0;
-  background-color: var(--blue-700);
   background-color: #4660d47e;
   width: 600px;
 }
@@ -723,7 +718,6 @@ main > aside {
 .FORMSINGLE input {
   background: transparent;
   outline: none;
-  border: none;
   border: 1px solid white;
   border-radius: 3px;
   color: white;
@@ -932,6 +926,21 @@ main > aside {
   }
 }
 
+/* Element | http://localhost:5173/notes */
+
+.Toastify__toast-icon > svg:nth-child(1) > path:nth-child(1) {
+  fill: var(--blue-500);
+}
+
+/* Inline | http://localhost:5173/notes */
+
+.Toastify__progress-bar--success {
+  background: var(--blue-700);
+}
+
+.Toastify__toast-theme--light, .Toastify__toast-theme--colored.Toastify__toast--default {
+  color: var(--neutral-400);
+}
 /*   768px-1025px */
 @media screen and (max-width: 1025px) {
   .mino {

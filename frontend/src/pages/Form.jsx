@@ -20,7 +20,7 @@ export default function Form({ operation }) {
         let con = true;
         let eres = await getUser(email);
 
-        if (operation == 'register') {
+        if (operation === 'register') {
             let euser = await getUser('', user);
             let chps = validatePassword(password);
             // make sure the username is not already taken
@@ -47,13 +47,13 @@ export default function Form({ operation }) {
                 con = false;
             }
             setErrors(srros);
-            if (Object.keys(srros).length == 0 && con) {
+            if (Object.keys(srros).length === 0 && con) {
                 let res = await addNewUser(email, user, password)
                 if (res) {
                     navigate('/')
                 }
             }
-        } else if (operation == 'signIn') {
+        } else if (operation === 'signIn') {
             console.log('sign in attempt!', eres);
             // the front end in that situation should check if the user & email exist and if true 
             // sends a signIn request to the backend
@@ -63,7 +63,7 @@ export default function Form({ operation }) {
                 setErrors(srros);
                 return;
             }
-            if (Object.keys(srros).length == 0 && con) {
+            if (Object.keys(srros).length === 0 && con) {
                 setIsLoading(true);
                 try {
                     let res = await newSission(email, password);
@@ -85,7 +85,7 @@ export default function Form({ operation }) {
     }
     return (
         <form className='FORMSINGLE' action={`/notes/${operation}`} method='POST' onSubmit={handleSubmit}>
-            {operation == 'register' &&
+            {operation === 'register' &&
                 <InputSlice error={errors?.existingUser} label={'Please Type Your Username'} type={'text'}
                     name={'username'} value={user} onchange={setUser}></InputSlice>
             }
@@ -93,7 +93,7 @@ export default function Form({ operation }) {
                 value={email} onchange={setEmail} />
             <InputSlice error={errors?.invalidPassword} label={'Please Type In Your Password'} type={'password'}
                 name={'password'} value={password} onchange={setPassword} />
-            {operation == 'register' && <>
+            {operation === 'register' && <>
                 <InputSlice error={errors?.different} label={'Repeat Password'} type={'password'} name={'rept'}
                     value={repeatedPassword} onchange={setRepeatedPassword} />
             </>}

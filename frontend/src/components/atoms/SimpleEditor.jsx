@@ -3,13 +3,15 @@ import './styles.scss'
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
-import { EditorProvider, useCurrentEditor } from '@tiptap/react'
+import {EditorContent, EditorProvider, useCurrentEditor} from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
+import {useViewContext} from "../../contexts/ViewNoteConext.jsx";
+import {useEditor} from "@tiptap/react";
+import {useEffect, useRef} from "react";
 
-const MenuBar = () => {
-    const { editor } = useCurrentEditor()
+const MenuBar = ({editor}) => {
+    // const { editor } = useCurrentEditor()
 
     if (!editor) {
         return null
@@ -29,7 +31,9 @@ const MenuBar = () => {
                     }
                     className={editor.isActive('bold') ? 'is-active' : ''}
                 >
-                    Bold
+                    {/*Bold*/}
+
+                    <strong>B</strong>
                 </button>
                 <button
                     onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -42,7 +46,7 @@ const MenuBar = () => {
                     }
                     className={editor.isActive('italic') ? 'is-active' : ''}
                 >
-                    Italic
+                    <strong style={{fontStyle: 'italic',fontFamily:'serif'}}>I</strong>
                 </button>
                 <button
                     onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -55,7 +59,7 @@ const MenuBar = () => {
                     }
                     className={editor.isActive('strike') ? 'is-active' : ''}
                 >
-                    Strike
+                Strike
                 </button>
                 <button
                     onClick={() => editor.chain().focus().toggleCode().run()}
@@ -208,50 +212,62 @@ const extensions = [
 ]
 
 const DefaultConent = `
-<h2>
-  Hi there,
-</h2>
-<p>
-  this is a <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
-</p>
-<ul>
-  <li>
-    That’s a bullet list with one …
-  </li>
-  <li>
-    … or two list items.
-  </li>
-</ul>
-<p>
-  Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
-</p>
-<pre><code class="language-css">body {
-  display: none;
-}</code></pre>
-<p>
-  I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
-</p>
-<blockquote>
-  Wow, that’s amazing. Good work, boy! 👏
-  <br />
-  — Mom
-</blockquote>
+<h2>Welcome!</h2>
+<p>You don't have any notes yet.</p>
+<p><strong>Click here or start typing to create a new note.</strong></p>
 `
 
-function SimpleEditor({ content=DefaultConent, onChange }) {
+
+// export const  SimpleEditor= () => {
+//     const {noteContent,setNoteContent} = useViewContext()
+//     return (
+//         <EditorProvider                 // key={noteContent.iContent} // force remount on content change
+//             slotAfter={<MenuBar />}
+//             extensions={extensions}
+//             content={noteContent.iContent ?? DefaultConent}
+//             onUpdate={({ editor }) => {
+//                 setNoteContent(old => ({ ...old, iContent: editor.getHTML() }))
+//             }}>
+//      </EditorProvider>
+//     )
+// }
+
+export function SimpleEditor() {
+    const { noteContent, setNoteContent, edit } = useViewContext();
+
+    const editor = useEditor({
+        extensions,
+        content: noteContent.iContent || DefaultConent,
+        editable: edit,
+        onUpdate: ({ editor }) => {
+            setNoteContent(old => ({ ...old, iContent: editor.getHTML() }));
+        },
+    });
+
+    // 👇 Re-set content if it changes externally
+    useEffect(() => {
+        if (!editor) return;
+        const incoming = noteContent.iContent || DefaultConent;
+        if (editor.getHTML() !== incoming) {
+            editor.commands.setContent(incoming, false);
+        }
+    }, [noteContent.iContent, editor]);
+
+    // 👇 Make editor reactive to `edit`
+    useEffect(() => {
+        if (editor) {
+            editor.setEditable(edit);
+        }
+    }, [edit, editor]);
+
+    if (!editor) return null;
+
     return (
-        <EditorProvider
-            key={content} // force remount on content change
-            slotAfter={<MenuBar />}
-            extensions={extensions}
-            content={content}
-            onUpdate={({ editor }) => {
-                if (onChange) {
-                    onChange(old => ({ ...old, iContent: editor.getHTML() }))
-                }
-            }}
-        />
-    )
+        <>
+            <EditorContent editor={editor} />
+            {edit && <MenuBar editor={editor} />}
+
+        </>
+    );
 }
 
-export default SimpleEditor

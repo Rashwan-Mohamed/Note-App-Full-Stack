@@ -5,10 +5,10 @@ import DesktopView from './pages/DesktopView.jsx'
 import { Popup } from './components/atoms/Popup.jsx'
 import {
     timeNow, editNoteTag, updateNote, newNoteRequest, deleteNote, fetchNotes,
-
 } from "./utility.js";
 import { NoteContext } from "./contexts/NoteContext.jsx";
 import Nav from "./pages/Nav.jsx";
+import {Bounce, ToastContainer} from "react-toastify";
 
 function App() {
     const width = UseWidth();
@@ -87,7 +87,7 @@ function App() {
 
 
             let eas = note.find((note) => note.title === title);
-            eas.isArchived = eas.isArchived == 1 ? 0 : 1;
+            eas.isArchived = eas.isArchived === 1 ? 0 : 1;
             await updateNote(eas.id, eas, operation, setActive);
             setChosen(0);
         } else if (operation === "delete") {
@@ -149,6 +149,19 @@ function App() {
 
     return (<>
         <NoteContext.Provider value={params}>
+            <ToastContainer
+                position="top-right"
+                autoClose={50000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick={true}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Bounce}
+            />
             <main className={width < 768 ? (showNote ? "activeNote" : "notActiveNote") : ''}>
                 <Popup />
                 <Nav />
