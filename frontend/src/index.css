@@ -25,7 +25,7 @@
   --neutral-100: #f3f5f8;
   --neutral-50: #f5f7fa;
   --blue-700: #2547d0;
-  --blue-500: #335cff;
+  --blue-500: rgba(51, 92, 255, 0.22);
   --blue-50: #ebf1ff;
   --green-500: #21c16b;
   --green-100: #191B25;
@@ -351,6 +351,12 @@ body {
 
 .mainContent {
   padding: 1rem;
+  display: flex
+;
+  /*flex-direction: column;*/
+  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 div.oneEd {
@@ -814,6 +820,23 @@ main > aside {
   background-color: var(--red-500);
   transition: all 0.2s ease-in-out;
 }
+
+/* Inline | http://localhost:5173/notes */
+
+.mainContent {
+  overflow-y: scroll;
+}
+
+.mino {
+  overflow-y: scroll;
+}
+
+/* Inline | http://localhost:5173/notes */
+
+.finalWarning {
+  z-index: 100;
+}
+
 /*   1450px and bigger    */
 @media screen and (min-width: 1450px) {
 }
@@ -1047,7 +1070,6 @@ main > aside {
   }
 
   .mainContent {
-    height: max-content;
     height: 100%;
   }
 

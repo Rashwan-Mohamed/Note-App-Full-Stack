@@ -36,6 +36,7 @@ export default function NoteWideView() {
                 <DeArNote />
             </aside>
             <Textarea />
+
             {
                 change && (<footer>
                     {" "}
