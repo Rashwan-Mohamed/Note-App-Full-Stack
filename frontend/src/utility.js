@@ -197,5 +197,7 @@ export const logout = async () => {
 
 export const validatePassword = (password) => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,}$/;
-    return passwordRegex.test(password);
+    // return passwordRegex.test(password);
+
+    return password.length>2;
 }   
