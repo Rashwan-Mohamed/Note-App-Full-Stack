@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './styles.scss'
 
 import { Color } from '@tiptap/extension-color'
@@ -110,18 +111,18 @@ const MenuBar = ({editor}) => {
                 >
                     H4
                 </button>
-                <button
-                    onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-                    className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
-                >
-                    H5
-                </button>
-                <button
-                    onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-                    className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
-                >
-                    H6
-                </button>
+                {/*<button*/}
+                {/*    onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}*/}
+                {/*    className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}*/}
+                {/*>*/}
+                {/*    H5*/}
+                {/*</button>*/}
+                {/*<button*/}
+                {/*    onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}*/}
+                {/*    className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}*/}
+                {/*>*/}
+                {/*    H6*/}
+                {/*</button>*/}
                 <button
                     onClick={() => editor.chain().focus().toggleBulletList().run()}
                     className={editor.isActive('bulletList') ? 'is-active' : ''}
@@ -211,33 +212,19 @@ const extensions = [
     }),
 ]
 
-const DefaultConent = `
+const DefaultContent = `
 <h2>Welcome!</h2>
 <p>You don't have any notes yet.</p>
 <p><strong>Click here or start typing to create a new note.</strong></p>
 `
 
 
-// export const  SimpleEditor= () => {
-//     const {noteContent,setNoteContent} = useViewContext()
-//     return (
-//         <EditorProvider                 // key={noteContent.iContent} // force remount on content change
-//             slotAfter={<MenuBar />}
-//             extensions={extensions}
-//             content={noteContent.iContent ?? DefaultConent}
-//             onUpdate={({ editor }) => {
-//                 setNoteContent(old => ({ ...old, iContent: editor.getHTML() }))
-//             }}>
-//      </EditorProvider>
-//     )
-// }
-
 export function SimpleEditor() {
     const { noteContent, setNoteContent, edit } = useViewContext();
 
     const editor = useEditor({
         extensions,
-        content: noteContent.iContent || DefaultConent,
+        content: noteContent.iContent || DefaultContent,
         editable: edit,
         onUpdate: ({ editor }) => {
             setNoteContent(old => ({ ...old, iContent: editor.getHTML() }));
@@ -247,7 +234,7 @@ export function SimpleEditor() {
     // 👇 Re-set content if it changes externally
     useEffect(() => {
         if (!editor) return;
-        const incoming = noteContent.iContent || DefaultConent;
+        const incoming = noteContent.iContent || DefaultContent;
         if (editor.getHTML() !== incoming) {
             editor.commands.setContent(incoming, false);
         }

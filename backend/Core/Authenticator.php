@@ -1,7 +1,6 @@
 <?php
 
 namespace Core;
-
 class Authenticator
 {
     public function attempt($email, $password)
@@ -9,7 +8,11 @@ class Authenticator
         $user = App::resolve(Database::class)->query("SELECT * FROM users WHERE email = :email",
             [":email" => $email])->find();
         if ($user) {
+
             if (password_verify($password, $user[0]['password'])) {
+                if($email==='guest@email.com'){
+                    $this->handleGuest();
+                }
                 return $this->login($user[0]);
             }
         }
@@ -30,4 +33,11 @@ class Authenticator
     {
         Session::destroy();
     }
+    function handleGuest(): void
+    {
+        $db = App::resolve(Database::class);
+        $db->query("DELETE FROM notes.notes WHERE userId = 1");
+        addData(1);
+    }
 }
+

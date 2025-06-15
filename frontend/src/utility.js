@@ -17,7 +17,6 @@ export function timeNow(last) {
 }
 
 export const API_BASE = import.meta.env.VITE_APP_API_BASE_URL;
-// export const API_BASE = `http://localhost:8888`
 
 
 const API_URL = `${API_BASE}/notes`;
@@ -54,7 +53,7 @@ export const fetchNotes = async (setNoto) => {
         notifyError(`ERROR FETCHING NOTES!`);
     }
 }
-export const updateNote = async (noteId, updatedNoteBody, operation, setActive) => {
+export const updateNote = async (noteId, updatedNoteBody) => {
     console.log('Request sent');
 
     try {
@@ -71,7 +70,7 @@ export const updateNote = async (noteId, updatedNoteBody, operation, setActive) 
 
     }
 };
-export const deleteNote = async (noteId, setActive) => {
+export const deleteNote = async (noteId) => {
     try {
         const response = await axios.post(DELETE_URL,
             { id: noteId }, // <-- this is the request body (data)
@@ -162,7 +161,7 @@ export const addNewUser = async (email, user, password) => {
 
 }
 
-export const newSission = async (email, password) => {
+export const newSession = async (email, password) => {
     console.log('attempt to start session');
 
     try {
@@ -204,7 +203,7 @@ export const logout = async () => {
 }
 
 export const validatePassword = (password) => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,}$/;
+    // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,}$/;
     // return passwordRegex.test(password);
 
     return password.length>2;

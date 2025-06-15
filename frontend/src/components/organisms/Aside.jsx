@@ -6,9 +6,9 @@ import {useGlobalContext} from "../../contexts/NoteContext.jsx";
 function Aside() {
     const width = UseWidth();
     const {note, isArchived, handleTagSelect, handleNoteState} = useGlobalContext()
-    const [showSide, setShowSide] = useState(() => {
-        return width < 768;
-    });
+    const [showSide, setShowSide] = useState(true);
+    // return width > 768;
+
     return (
         <>
             <aside className={showSide ? "" : "moveLift"}>

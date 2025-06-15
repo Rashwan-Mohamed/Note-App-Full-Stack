@@ -10,7 +10,7 @@ export default function Register() {
             <section className='signInForm'>
                 <h1>Hello, Register a new Account!</h1>
                 <Form operation={'register'}></Form>
-                <p>Already a user?, Sign In or contiune as a guest</p>
+                <p>Already a user?, Sign In or continue as a guest</p>
                 <ul className='controllBtns' >
                     <li>
                         <Link className='ftbtn btas' to='/'>Sign In</Link>

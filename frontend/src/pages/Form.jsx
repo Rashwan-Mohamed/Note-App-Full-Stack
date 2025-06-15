@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
-import { addNewUser, getUser, newSission, validatePassword } from '../utility.js';
+import { addNewUser, getUser, newSession, validatePassword } from '../utility.js';
 import { useNavigate } from 'react-router';
 import Spinner from "../components/atoms/Spinner.jsx";
 import InputSlice from "../components/atoms/InputSlice.jsx";
@@ -38,11 +38,10 @@ export default function Form({ operation }) {
                 srros = { ...srros, 'different': 'password don\'t match' }
                 con = false;
             }
-            // make sure password is valid (must be atleast 7 charcters long and contains special charcters and lower and uppercase characters)
             if (!chps) {
                 srros = {
                     ...srros,
-                    'invalidPassword': 'password has to be atleast 7 charcters long and contain lower & uppercase characters and special charcters'
+                    'invalidPassword': 'password has to be at least three characters long'
                 }
                 con = false;
             }
@@ -66,7 +65,7 @@ export default function Form({ operation }) {
             if (Object.keys(srros).length === 0 && con) {
                 setIsLoading(true);
                 try {
-                    let res = await newSission(email, password);
+                    let res = await newSession(email, password);
                     if (res) {
                         navigate('/notes');
                     }

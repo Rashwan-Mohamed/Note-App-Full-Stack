@@ -83,6 +83,8 @@ function App() {
             await updateNote(nsa.id, nsa, operation, setActive);
             trackTagsChange.add = [];
             trackTagsChange.remove = [];
+            setChosen(0);
+
         } else if (operation === "archieve" || operation === "Un-Archive") {
 
 

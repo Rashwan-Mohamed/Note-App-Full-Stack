@@ -30,7 +30,7 @@
 
     require base_path('bootstrap.php');
 
-//    require BASE_PATH . "Core/addData.php";
+    require BASE_PATH . "Core/addData.php";
 
     $router = new Router();
     $routes = require base_path('routes.php');

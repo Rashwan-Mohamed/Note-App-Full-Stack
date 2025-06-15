@@ -1230,13 +1230,11 @@ main > aside {
   }
 
   button.ftbtn:nth-child(1) {
-    padding: 2px;
     font-size: 11px;
     padding: 5px 2px;
   }
 
   button.ftbtn:nth-child(2) {
-    padding: 2px;
     font-size: 11px;
     padding: 5px 2px;
   }
@@ -1249,7 +1247,6 @@ main > aside {
     width: 20px;
   }
   #titleInput {
-    font-size: 10px;
     padding-left: 0;
     font-size: 5vw;
   }
@@ -1313,6 +1310,7 @@ main > aside {
 
   .notActiveNote {
     gap: 0 2px;
+    grid-template-columns: auto 1fr;
   }
 
   .singleTag {

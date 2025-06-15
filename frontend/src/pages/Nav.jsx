@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router";
 import { logout } from "../utility.js";
 import { useAuth } from "../hooks/useAuth.jsx";
-import SVG1 from "../assets/SVG Components/SVG1.jsx";
 import { useState } from "react";
 import Spinner from "../components/atoms/Spinner.jsx";
 import { useGlobalContext } from "../contexts/NoteContext.jsx";
