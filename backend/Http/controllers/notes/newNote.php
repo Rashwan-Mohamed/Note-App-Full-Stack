@@ -17,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $userId = SESSION::get('user')['id'];
-    $db->query("INSERT INTO notes (title, userId)
+    $db->query("INSERT INTO notes.notes (title, userId)
         SELECT CONCAT('untitled_', COUNT(*) + 2), :id
-        FROM notes
+        FROM notes.notes
         WHERE userId = :id AND title LIKE 'untitled_%';", ['id' => $userId]);
     http_response_code(200);
     echo json_encode(['message' => 'Note created']);

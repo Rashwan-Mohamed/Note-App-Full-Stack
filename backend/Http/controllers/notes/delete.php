@@ -9,7 +9,7 @@ $db = App::resolve(Database::class);
 $data = json_decode(file_get_contents('php://input'), true);;
 $noteId = $data['id'];
 
-$db->query("DELETE FROM notes WHERE id = :id", [
+$db->query("DELETE FROM notes.notes WHERE id = :id", [
     'id' => $noteId,
 ]);
 
