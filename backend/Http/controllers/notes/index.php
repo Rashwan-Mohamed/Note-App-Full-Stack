@@ -11,12 +11,12 @@ $userId = SESSION::get('user')['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try {
-        $notes = $db->query("SELECT * FROM notes.notes WHERE userId=:id ORDER BY lastEdited DESC", ['id' => $userId])->get(); // get() returns all records
+        $notes = $db->query("SELECT * FROM notes WHERE userId=:id ORDER BY lastEdited DESC", ['id' => $userId])->get(); // get() returns all records
         foreach ($notes as &$note) {
             $tags = $db->query(
                 "SELECT name
-             FROM notes.tags
-             WHERE notes.tags.noteId=:id",
+             FROM tags
+             WHERE tags.noteId=:id",
                 ['id' => $note['id']]
             )->get(); // get() returns array of tag rows
 

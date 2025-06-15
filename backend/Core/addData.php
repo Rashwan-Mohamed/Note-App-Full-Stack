@@ -21,12 +21,12 @@ function addData ($userId)
         $isArchived = $note['isArchived'];
         $isArchived = $isArchived ? 1 : 0;
         $tags = $note['tags'];
-        $fnb = $db->query("INSERT INTO notes.notes (id,title, content,isArchived,naew,userId) VALUES (:id,:title, :content, :isArchived, 0,:userId)",
+        $fnb = $db->query("INSERT INTO notes (id,title, content,isArchived,naew,userId) VALUES (:id,:title, :content, :isArchived, 0,:userId)",
             ['id' => $id,'title' => $title,
                 'content' => $content, 'isArchived' => $isArchived,'userId' => $userId]);
         foreach ($tags as $tag) {
             $tagId++;
-            $db->query("INSERT INTO notes.tags (id, name, noteId) VALUES (:id,:tag,:noteId)", ['id' => $tagId,'tag' => $tag,'noteId'=>$id]);
+            $db->query("INSERT INTO tags (id, name, noteId) VALUES (:id,:tag,:noteId)", ['id' => $tagId,'tag' => $tag,'noteId'=>$id]);
         }
 
     }

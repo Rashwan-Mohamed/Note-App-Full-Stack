@@ -16,12 +16,12 @@ $operation = $data['operation'];
 //exit();
 if ($operation == 'remove') {
     foreach ($tags as $tag) {
-        $db->query("DELETE FROM notes.tags WHERE name=:tag AND noteId=:noteId", ['tag' => $tag,'noteId'=>$noteId]);
+        $db->query("DELETE FROM tags WHERE name=:tag AND noteId=:noteId", ['tag' => $tag,'noteId'=>$noteId]);
     }
 }
 if ($operation == 'add') {
     foreach ($tags as $tag) {
-        $db->query("INSERT INTO notes.tags (name,noteId) VALUES (:tag,:noteId)", ['tag' => $tag,'noteId' => $noteId]);
+        $db->query("INSERT INTO tags (name,noteId) VALUES (:tag,:noteId)", ['tag' => $tag,'noteId' => $noteId]);
     }
 }
 

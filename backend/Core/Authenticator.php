@@ -36,7 +36,7 @@ class Authenticator
     function handleGuest(): void
     {
         $db = App::resolve(Database::class);
-        $db->query("DELETE FROM notes.notes WHERE userId = 1");
+        $db->query("DELETE FROM notes WHERE userId = 1");
         addData(1);
     }
 }
