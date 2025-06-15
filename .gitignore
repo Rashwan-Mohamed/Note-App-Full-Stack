@@ -2,6 +2,7 @@
 ./backend/config
 *.sql
 *.zip
+node_modules
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm
 # Edit at https://www.toptal.com/developers/gitignore?templates=phpstorm
 
